@@ -300,9 +300,10 @@ def create_project() -> None:
         check=False,
     )
     if result.returncode == 0:
-        projects = json.loads(result.stdout)
+        payload = json.loads(result.stdout)
+        projects = payload.get("projects", payload if isinstance(payload, list) else [])
         for project in projects:
-            if project.get("title") == "Just Coffee":
+            if isinstance(project, dict) and project.get("title") == "Just Coffee":
                 print(f"Project already exists: {project.get('url', project)}")
                 return
 

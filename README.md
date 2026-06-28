@@ -16,7 +16,7 @@ Psychological point-and-click adventure built in **Godot 4.x** (GDScript). Bilin
 
 ## Project status
 
-Godot scaffold and core systems are in progress. Track work on the [GitHub Project board](../../projects) and open issues.
+Godot scaffold and core systems are in progress. Track work on the [GitHub Project board](https://github.com/users/LionGon/projects/8) and [open issues](https://github.com/LionGon/JustCoffee/issues).
 
 ## For contributors & AI agents
 
