@@ -1,54 +1,33 @@
-# Remotion video
+# Just Coffee
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Psychological point-and-click adventure built in **Godot 4.x** (GDScript). Bilingual **French / English**.
 
-Welcome to your Remotion project!
+> Single source of truth: [`RULES.md`](RULES.md)  
+> Production plan & GitHub issues: [`tasks/PRODUCTION_PLAN.md`](tasks/PRODUCTION_PLAN.md)
 
-## Commands
+## Current milestone
 
-**Install Dependencies**
+**Vertical Slice** — Cycle 0 + Cycle 1 + Café scene (~45–60 min demo).
 
-```console
-npm i
-```
+## Requirements
 
-**Start Preview**
+- [Godot 4.3+](https://godotengine.org/) (exact version documented in `docs/ENGINE.md` when scaffold lands)
+- **Headphones strongly recommended** — binaural spatial audio is part of the design
 
-```console
-npm run dev
-```
+## Project status
 
-**Render video**
+Godot scaffold and core systems are in progress. Track work on the [GitHub Project board](../../projects) and open issues.
 
-```console
-npx remotion render
-```
+## For contributors & AI agents
 
-**Upgrade Remotion**
+1. Read [`RULES.md`](RULES.md) in full before any change.
+2. Read [`CONTRIBUTING.md`](CONTRIBUTING.md).
+3. Pick an issue from the backlog; respect dependency order in [`tasks/PRODUCTION_PLAN.md`](tasks/PRODUCTION_PLAN.md).
 
-```console
-npx remotion upgrade
-```
+## Dev tools (when available)
 
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
+- `scenes/ui/core_test.tscn` — autoload / EventBus integration test scene
 
 ## License
 
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+TBD

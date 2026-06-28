@@ -1,7 +1,29 @@
-node_modules
-dist
-.DS_Store
-.env
+# Godot
+.godot/
+*.import
+export_presets.cfg
+*.translation
 
-# Ignore the output video from Git but not videos you import into src/.
-out
+# Build / export
+build/
+exports/
+*.exe
+*.pck
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets
+.env
+.env.*
+
+# Node (legacy — remove when confirmed unused)
+node_modules/
