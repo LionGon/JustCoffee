@@ -285,7 +285,8 @@ def add_dependency_comments(issues: list[IssueSpec], issue_map: dict[str, int]) 
         time.sleep(0.2)
 
 
-def create_project() -> None:
+def create_project() -> str | None:
+    """Return project URL if found or created."""
     result = run_gh(
         [
             "project",
@@ -299,30 +300,109 @@ def create_project() -> None:
         ],
         check=False,
     )
+    project_url: str | None = None
     if result.returncode == 0:
         payload = json.loads(result.stdout)
         projects = payload.get("projects", payload if isinstance(payload, list) else [])
         for project in projects:
             if isinstance(project, dict) and project.get("title") == "Just Coffee":
-                print(f"Project already exists: {project.get('url', project)}")
-                return
+                project_url = project.get("url")
+                print(f"Project already exists: {project_url}")
+                break
 
-    created = run_gh(
-        [
-            "project",
-            "create",
-            "--owner",
-            "LionGon",
-            "--title",
-            "Just Coffee",
-            "--format",
-            "json",
-        ],
-        check=False,
-    )
-    if created.returncode == 0:
-        data = json.loads(created.stdout)
-        print(f"Created project: {data.get('url', data)}")
+    if not project_url:
+        created = run_gh(
+            [
+                "project",
+                "create",
+                "--owner",
+                "LionGon",
+                "--title",
+                "Just Coffee",
+                "--format",
+                "json",
+            ],
+            check=False,
+        )
+        if created.returncode == 0:
+            data = json.loads(created.stdout)
+            project_url = data.get("url")
+            print(f"Created project: {project_url}")
+
+    return project_url
+
+
+def configure_project_status_columns() -> None:
+    """Set Status field to Backlog → Ready → In Progress → Review → Done."""
+    query_fields = """
+    query {
+      user(login: "LionGon") {
+        projectV2(number: 8) {
+          fields(first: 20) {
+            nodes {
+              ... on ProjectV2SingleSelectField {
+                id
+                name
+                options { id name }
+              }
+            }
+          }
+        }
+      }
+    }
+    """
+    result = run_gh(["api", "graphql", "-f", f"query={query_fields}"], check=False)
+    if result.returncode != 0:
+        print("Warning: could not fetch project fields for status configuration", file=sys.stderr)
+        return
+
+    nodes = json.loads(result.stdout)["data"]["user"]["projectV2"]["fields"]["nodes"]
+    status_field = next((n for n in nodes if n.get("name") == "Status"), None)
+    if not status_field:
+        print("Warning: Status field not found on project #8", file=sys.stderr)
+        return
+
+    option_ids = {opt["name"]: opt["id"] for opt in status_field.get("options", [])}
+    required = ["Backlog", "Ready", "In Progress", "Review", "Done"]
+    if all(name in option_ids for name in required):
+        print("Project status columns already configured")
+        return
+
+    # Preserve existing option IDs when renaming Todo → Backlog, etc.
+    backlog_id = option_ids.get("Backlog") or option_ids.get("Todo", "")
+    in_progress_id = option_ids.get("In Progress", "")
+    done_id = option_ids.get("Done", "")
+
+    options_parts = [
+        f'{{ id: "{backlog_id}", name: "Backlog", color: GRAY, description: "Not started" }}'
+        if backlog_id
+        else '{ name: "Backlog", color: GRAY, description: "Not started" }',
+        '{ name: "Ready", color: BLUE, description: "Dependencies met" }',
+        f'{{ id: "{in_progress_id}", name: "In Progress", color: YELLOW, description: "Active work" }}'
+        if in_progress_id
+        else '{ name: "In Progress", color: YELLOW, description: "Active work" }',
+        '{ name: "Review", color: ORANGE, description: "Awaiting review" }',
+        f'{{ id: "{done_id}", name: "Done", color: GREEN, description: "Complete" }}'
+        if done_id
+        else '{ name: "Done", color: GREEN, description: "Complete" }',
+    ]
+    mutation = f"""
+    mutation {{
+      updateProjectV2Field(input: {{
+        fieldId: "{status_field["id"]}"
+        singleSelectOptions: [{", ".join(options_parts)}]
+      }}) {{
+        projectV2Field {{
+          ... on ProjectV2SingleSelectField {{
+            name
+            options {{ id name }}
+          }}
+        }}
+      }}
+    }}
+    """
+    run_gh(["api", "graphql", "-f", f"query={mutation}"], check=False)
+    print("Configured project status columns")
 
 
 def main() -> None:
@@ -348,6 +428,9 @@ def main() -> None:
 
     print("Creating project board...")
     create_project()
+
+    print("Configuring project status columns...")
+    configure_project_status_columns()
 
     print(f"\nDone. Created/verified {len(issue_map)} issues in {REPO}")
 
