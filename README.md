@@ -29,6 +29,7 @@ Repository and GitHub board are set up; Godot scaffold is next ([#3](https://git
 1. Read [`RULES.md`](RULES.md) in full before any change.
 2. Read [`CONTRIBUTING.md`](CONTRIBUTING.md).
 3. Pick an issue from the backlog; respect dependency order in [`tasks/PRODUCTION_PLAN.md`](tasks/PRODUCTION_PLAN.md).
+4. File bugs, features, or design gaps via the [issue templates](https://github.com/LionGon/JustCoffee/issues/new/choose) (blank issues disabled).
 
 ## Dev tools (when available)
 
