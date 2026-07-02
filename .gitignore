@@ -27,3 +27,5 @@ Thumbs.db
 
 # Node (legacy — remove when confirmed unused)
 node_modules/
+
+scripts/__pycache__/
