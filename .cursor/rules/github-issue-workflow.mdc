@@ -1,0 +1,58 @@
+---
+description: Git branch and PR workflow — one issue per branch, no auto-commits
+alwaysApply: true
+---
+
+# GitHub issue workflow
+
+One GitHub issue = one branch = one PR. Never commit or push unless the user explicitly asks.
+
+## When starting an issue
+
+1. Confirm the GitHub issue number (e.g. `#42`) and `ISSUE-xxx` id from `tasks/PRODUCTION_PLAN.md`.
+2. Create a branch from up-to-date `main`:
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b issue/<number>-<short-kebab-slug>
+```
+
+Example: `issue/42-github-issue-templates`
+
+## While working
+
+- Implement only what the issue scope requires.
+- Do **not** run `git add`, `git commit`, or `git push` unless the user explicitly requests it.
+- When work is ready, **print the commands below** for the user to run.
+
+## Commands to give the user (commit + PR)
+
+```bash
+git add <changed-files>
+git commit -m "$(cat <<'EOF'
+<type>: <short summary>
+
+Closes #<number>
+EOF
+)"
+git push -u origin issue/<number>-<short-kebab-slug>
+gh pr create --title "ISSUE-<xxx> — <issue title>" --body "$(cat <<'EOF'
+## Summary
+<what changed and why>
+
+## Related issues
+Closes #<number>
+
+## Test plan
+- [ ] <how to verify>
+EOF
+)"
+```
+
+## PR requirements
+
+- Title: `ISSUE-<xxx> — <issue title>` (match PRODUCTION_PLAN).
+- Body must include `Closes #<number>` so merging closes the issue.
+- Use `.github/pull_request_template.md` checklist (RULES.md, EventBus, etc.).
+- One PR per issue — no bundling unrelated work.
