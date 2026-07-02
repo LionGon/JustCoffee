@@ -57,6 +57,15 @@ LABELS: list[str] = [
     "collaborative",
     "blocked:design",
     "vertical-slice",
+    "executor:cursor",
+    "executor:human",
+    "executor:cursor+human",
+    "tool:godot",
+    "tool:dialogic",
+    "tool:daw",
+    "tool:art",
+    "tool:github",
+    "tool:audacity",
 ]
 
 

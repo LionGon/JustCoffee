@@ -37,11 +37,22 @@
 
 ### Assignee guidance
 
-| Tag | Who |
-|---|---|
-| `human-required` | Creative decisions, naming protagonist, composing music, final art approval |
-| `ai-suitable` | Boilerplate code, scaffolding, shader stubs, dialogue file structure |
-| `collaborative` | Scene assembly, dialogue writing (AI drafts → human edits tone) |
+| Label | Who | Meaning |
+|---|---|---|
+| `executor:cursor` | **Cursor** | Agent can own end-to-end; verify in Godot if `tool:godot` |
+| `executor:human` | **Human** | Creative, composition, or approval — not delegable |
+| `executor:cursor+human` | **Both** | Cursor drafts/implements; human reviews, edits, or signs off |
+| `tool:godot` | External | Godot 4.x editor required |
+| `tool:dialogic` | External | Dialogic 2 addon in Godot |
+| `tool:daw` | External | DAW (Logic, Ableton, Reaper, etc.) |
+| `tool:art` | External | Krita, Photoshop, Procreate, Aseprite, etc. |
+| `tool:github` | External | GitHub web or `gh` CLI |
+| `tool:audacity` | External | Audacity or DAW for SFX editing |
+
+Legacy labels (`ai-suitable`, `human-required`, `collaborative`) remain for filters; prefer `executor:*` + `tool:*`.
+
+Re-apply: `python3 scripts/apply_executor_labels.py`  
+Source: [`scripts/issue_executors.py`](../scripts/issue_executors.py)
 
 ---
 
@@ -73,6 +84,9 @@ lang:gdscript      lang:dialogic      lang:shader
 priority:critical  priority:high      priority:medium    priority:low
 type:feature       type:bug           type:docs          type:asset
 human-required     ai-suitable        collaborative
+executor:cursor    executor:human     executor:cursor+human
+tool:godot         tool:dialogic      tool:daw
+tool:art           tool:github        tool:audacity
 blocked:design     vertical-slice
 ```
 
@@ -1916,8 +1930,9 @@ These are flagged in RULES.md §15–§16. Create `design_gap` issues before wor
 | View | Filter |
 |---|---|
 | Vertical Slice Critical Path | `priority:critical` + milestones M0–M9 |
-| AI Pickup | `ai-suitable` + column Ready |
-| Needs Human | `human-required` |
+| AI Pickup | `executor:cursor` + column Ready |
+| Needs Human | `executor:human` |
+| External tools | `tool:godot`, `tool:daw`, `tool:art`, etc. |
 | Cycle 0 | `cycle:0` |
 | Cycle 1 | `cycle:1` |
 | Narrative | `area:narrative` |
