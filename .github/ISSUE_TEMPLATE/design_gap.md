@@ -1,10 +1,12 @@
 ---
 name: Design gap
-about: Decision not specified in RULES.md — needs confirmation before implementation
+about: Unspecified decision (RULES.md §16) — propose options only; no implementation until confirmed
 title: "[DESIGN] "
 labels: blocked:design
 assignees: ''
 ---
+
+> **Do not implement** until a maintainer confirms an option. RULES.md §16: *"When a decision is not in this document: STOP. Flag the gap. Do not invent."*
 
 ## What is missing from RULES.md?
 

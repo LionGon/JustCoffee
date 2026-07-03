@@ -28,6 +28,14 @@
 
 Use the PR template checklist. Narrative PRs must pass [`docs/WRITING_GUIDE.md`](docs/WRITING_GUIDE.md) when that file exists.
 
-## Reporting bugs
+## Issue templates
 
-Use the bug report template. Include cycle, district, and language (FR/EN).
+Use the matching GitHub template when opening an issue:
+
+| Template | When to use |
+|---|---|
+| **Bug report** | Something broke — include cycle, district, language (FR/EN), and repro steps |
+| **Feature request** | New functionality that aligns with RULES.md |
+| **Design gap** | Decision not in RULES.md — propose options only; **no implementation until confirmed** |
+
+Blank issues are disabled. Unspecified design goes through **Design gap**, not a feature request.

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: RULES.md (locked design)
+    url: https://github.com/LionGon/JustCoffee/blob/main/RULES.md
+    about: Read the full design bible before filing work — agents and humans alike
+  - name: CONTRIBUTING.md
+    url: https://github.com/LionGon/JustCoffee/blob/main/CONTRIBUTING.md
+    about: Hard rules, PR checklist, and how to use the issue templates
