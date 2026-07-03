@@ -13,16 +13,31 @@
 - [Godot 4.3+](https://godotengine.org/) — **pin: 4.3.x** until `docs/ENGINE.md` records the exact editor version used for the Vertical Slice
 - **Headphones strongly recommended** at launch — binaural spatial audio is core to the design ([`RULES.md` §10](RULES.md#10-audio-design))
 
+## Rendering
+
+The project uses **GL Compatibility** (`gl_compatibility` in `project.godot`). Just Coffee is 2D-heavy (illustrated backgrounds, CanvasItem shaders, no 3D pipeline); Compatibility trades some modern renderer features for broader GPU support on laptops and integrated graphics — appropriate for a narrative adventure with a wide playtest audience. Forward+ remains an option if a future milestone needs it; document any switch in `docs/ENGINE.md`.
+
 ## Open the project
 
 1. Clone this repository.
 2. Install [Godot 4.3+](https://godotengine.org/download).
-3. In the Godot Project Manager, **Import** → select [`project.godot`](project.godot) at the repo root (created in [#3](https://github.com/LionGon/JustCoffee/issues/3)).
-4. Press **F5** to run once the scaffold lands.
+3. In the Godot Project Manager, **Import** → select [`project.godot`](project.godot) at the repo root.
+4. Run the project — **⌘ + B** on macOS, **F5** on Windows/Linux — the boot scene shows **Just Coffee — WIP** at 1920×1080.
+
+### Input placeholders
+
+| Action | Default binding | Purpose |
+|--------|-----------------|---------|
+| `click` | Left mouse button | Hotspot / world interaction |
+| `verb_select_prev` | Q | Cycle verb bar selection |
+| `verb_select_next` | E | Cycle verb bar selection |
+| `verb_confirm` | Enter | Confirm selected verb |
+
+Full verb bar wiring lands in later UI issues ([#401+](https://github.com/LionGon/JustCoffee/issues)).
 
 ## Project status
 
-Repository and GitHub board are set up; Godot scaffold is next ([#3](https://github.com/LionGon/JustCoffee/issues/3)). Track work on the [GitHub Project board](https://github.com/users/LionGon/projects/8) (columns: Backlog → Ready → In Progress → Review → Done) and [open issues](https://github.com/LionGon/JustCoffee/issues). Unspecified design decisions go in [Discussions](https://github.com/LionGon/JustCoffee/discussions) or a design-gap issue ([`RULES.md` §16](RULES.md#16-locked-decisions--do-not-redesign)).
+Godot scaffold and folder tree per [`RULES.md` §13](RULES.md#13-technical-architecture--godot-4) are in place ([#3](https://github.com/LionGon/JustCoffee/issues/3)). Six autoload stubs are registered; signal implementations follow in M1 core issues. Track work on the [GitHub Project board](https://github.com/users/LionGon/projects/8) (columns: Backlog → Ready → In Progress → Review → Done) and [open issues](https://github.com/LionGon/JustCoffee/issues). Unspecified design decisions go in [Discussions](https://github.com/LionGon/JustCoffee/discussions) or a design-gap issue ([`RULES.md` §16](RULES.md#16-locked-decisions--do-not-redesign)).
 
 ## For contributors & AI agents
 
