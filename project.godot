@@ -18,8 +18,8 @@ config/name="Just Coffee"
 config/description="Psychological point-and-click adventure"
 config/version="0.1.0"
 run/main_scene="res://scenes/ui/boot.tscn"
-config/icon="res://assets/ui/icon.svg"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://assets/ui/icon.svg"
 
 [autoload]
 

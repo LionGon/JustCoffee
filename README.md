@@ -80,9 +80,10 @@ Godot scaffold and folder tree per [`RULES.md` §13](RULES.md#13-technical-archi
 3. Pick an issue from the backlog; respect dependency order in [`tasks/PRODUCTION_PLAN.md`](tasks/PRODUCTION_PLAN.md).
 4. File bugs, features, or design gaps via the [issue templates](https://github.com/LionGon/JustCoffee/issues/new/choose) (blank issues disabled).
 
-## Dev tools (when available)
+## Dev tools
 
-- `scenes/ui/core_test.tscn` — autoload / EventBus integration test scene
+- `scenes/ui/event_bus_test.tscn` — emit and receive all EventBus signals ([#5](https://github.com/LionGon/JustCoffee/issues/5))
+- `scenes/ui/core_test.tscn` — full autoload integration test (ISSUE-108, not yet implemented)
 
 ## License
 
