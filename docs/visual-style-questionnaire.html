@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Just Coffee — Questionnaire VISUAL_STYLE.md</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --panel: #1a1d27;
+      --border: #2d3348;
+      --text: #e8eaef;
+      --muted: #9aa3b5;
+      --accent: #6b9fff;
+      --ok: #3d9a6a;
+      --redo: #c45c5c;
+      --unsure: #c9a227;
+      --skip: #6b7280;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "SF Pro Text", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 17, 23, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+    }
+    header h1 { margin: 0 0 0.35rem; font-size: 1.25rem; }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    header a { color: var(--accent); }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    button {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.45rem 0.75rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    button.primary { background: var(--accent); color: #0b1020; border-color: transparent; font-weight: 600; }
+    button:hover { filter: brightness(1.08); }
+    main { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+    section { margin-bottom: 2.5rem; }
+    section h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .intro {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .intro strong { color: var(--text); }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .card.locked { border-left: 3px solid var(--unsure); }
+    .card-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-head h3 { margin: 0; font-size: 1rem; }
+    .meta { font-size: 0.8rem; color: var(--muted); }
+    .meta code { color: #b8c4e0; font-size: 0.78rem; }
+    .prompt {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin: 0.5rem 0 0.75rem;
+    }
+    .img-wrap {
+      background: #12141c;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem;
+      margin-bottom: 0.75rem;
+      text-align: center;
+      min-height: 80px;
+    }
+    .img-wrap img {
+      max-width: 100%;
+      max-height: 360px;
+      height: auto;
+    }
+    .img-wrap.small img { max-height: 200px; }
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.4rem;
+    }
+    .choices label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      padding: 0.45rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+    .choices input { accent-color: var(--accent); margin-top: 0.15rem; flex-shrink: 0; }
+    .choices label:has(input:checked) { border-color: var(--accent); background: #22283a; }
+    .note {
+      width: 100%;
+      margin-top: 0.5rem;
+      background: #12141c;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 0.5rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      resize: vertical;
+      min-height: 2.5rem;
+    }
+    #export {
+      width: 100%;
+      min-height: 220px;
+      background: #12141c;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 0.75rem;
+      font-family: ui-monospace, monospace;
+      font-size: 0.8rem;
+      margin-top: 0.75rem;
+    }
+    .progress { color: var(--accent); font-weight: 600; }
+    .missing { color: var(--redo); font-size: 0.85rem; padding: 1rem; }
+    .synth-card textarea.note { min-height: 4rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Just Coffee — Questionnaire <code>VISUAL_STYLE.md</code></h1>
+    <p>Issue <strong><a href="https://github.com/LionGon/JustCoffee/issues/40">#40</a></strong> / ISSUE-601 · Guide les ajouts avant merge · Source : <a href="../RULES.md">RULES.md</a> §9</p>
+    <div class="toolbar">
+      <span class="progress" id="progress">0 / 0 répondu</span>
+      <button type="button" id="btn-export" class="primary">Générer le résumé</button>
+      <button type="button" id="btn-copy">Copier</button>
+      <button type="button" id="btn-clear">Effacer mes réponses</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro">
+      <strong>Mode d’emploi :</strong> pour chaque question, choisis une option. Les cartes <strong>🔒</strong> reprennent des règles déjà verrouillées dans RULES.md — tu décides seulement <em>comment</em> les documenter dans le guide art.
+      Réponses sauvegardées dans le navigateur. Clique <strong>Générer le résumé</strong> puis colle le texte dans Cursor.
+    </div>
+
+    <div class="legend">
+      <span>✅ Section complète dans VISUAL_STYLE.md</span>
+      <span>📝 Renvoi court vers RULES.md</span>
+      <span>⏭ Ne pas ajouter (draft actuel suffit)</span>
+      <span>❓ À discuter / TBD</span>
+    </div>
+
+    <section id="section-scope"><h2>A — Périmètre du document</h2></section>
+    <section id="section-reflection"><h2>B — Reflection &amp; Dorian</h2></section>
+    <section id="section-apartment"><h2>C — Appartement (Le Seuil)</h2></section>
+    <section id="section-cycles"><h2>D — Progression inter-cycles</h2></section>
+    <section id="section-npc"><h2>E — NPC &amp; personnages</h2></section>
+    <section id="section-hud"><h2>F — Composition &amp; HUD</h2></section>
+    <section id="section-cafe"><h2>G — Référence café</h2></section>
+    <section id="section-tech"><h2>H — Technique &amp; pipeline</h2></section>
+    <section id="section-tone"><h2>I — Ton &amp; références</h2></section>
+    <section id="section-governance"><h2>J — Gouvernance &amp; merge</h2></section>
+    <section id="section-synth"><h2>K — Synthèse</h2></section>
+
+    <section>
+      <h2>Export pour le chat</h2>
+      <textarea id="export" readonly placeholder="Clique « Générer le résumé » puis colle le texte dans Cursor."></textarea>
+    </section>
+  </main>
+
+  <script>
+    const CHOICES_DEFAULT = [
+      { value: "full", label: "✅ Section complète" },
+      { value: "brief", label: "📝 Renvoi court RULES.md" },
+      { value: "skip", label: "⏭ Ne pas ajouter" },
+      { value: "discuss", label: "❓ À discuter" },
+    ];
+
+    const CHOICES_SCOPE_A1 = [
+      { value: "minimal", label: "A — Minimal (proche §9 actuel)" },
+      { value: "standard", label: "B — Standard (+ appart., Dorian, UI, cycles)" },
+      { value: "complete", label: "C — Complet (+ tableaux cycle, anti-patterns)" },
+    ];
+
+    const CHOICES_SCOPE_A2 = [
+      { value: "art-only", label: "Art seulement" },
+      { value: "art-compose", label: "Art + zones composition HUD" },
+      { value: "integrated", label: "Art + UI + systèmes (bible intégrée)" },
+    ];
+
+    const CHOICES_YES_NO_TBD = [
+      { value: "yes", label: "✅ Oui" },
+      { value: "brief", label: "📝 Oui, version courte" },
+      { value: "no", label: "⏭ Non" },
+      { value: "discuss", label: "❓ TBD / discuter" },
+    ];
+
+    const CHOICES_B2 = [
+      { value: "rules-list", label: "Vitrines / flaques / cuillères (RULES)" },
+      { value: "rules-cafe", label: "+ surfaces café (miroir sans révélation)" },
+      { value: "custom", label: "Autre (note ci-dessous)" },
+      { value: "skip", label: "⏭ Hors guide" },
+    ];
+
+    const CHOICES_B3 = [
+      { value: "proportions", label: "Silhouette fausse" },
+      { value: "delay", label: "Délai ~0,5 s" },
+      { value: "both", label: "Les deux" },
+      { value: "discuss", label: "❓ Autre nuance" },
+    ];
+
+    const CHOICES_C2 = [
+      { value: "amber-only", label: "Ambre chaud — seul espace genuinely warm" },
+      { value: "mood-words", label: "Mood words sans hex" },
+      { value: "skip", label: "⏭ Pas de palette dédiée" },
+    ];
+
+    const CHOICES_C3 = [
+      { value: "full-table", label: "Tableau complet (RULES §8)" },
+      { value: "summary", label: "Résumé 3 bullets" },
+      { value: "skip", label: "⏭ Renvoi RULES.md seulement" },
+    ];
+
+    const CHOICES_D1 = [
+      { value: "palette-drift", label: "Même géo, palette plus froide chaque cycle" },
+      { value: "cycle-table", label: "Tableau cycle par cycle" },
+      { value: "vs-only", label: "Un fond / district pour le VS" },
+      { value: "tbd", label: "❓ TBD dans le guide" },
+    ];
+
+    const CHOICES_D2 = [
+      { value: "same-decor", label: "Même décor — systèmes seulement" },
+      { value: "visible-decay", label: "Dégradation visible du décor" },
+      { value: "tbd", label: "❓ Design gap" },
+    ];
+
+    const CHOICES_G1 = [
+      { value: "mood", label: "Mood seulement" },
+      { value: "mood-layout", label: "Mood + placement gameplay" },
+      { value: "mood-mirror", label: "Mood + miroir laiton visible" },
+    ];
+
+    const CHOICES_G2 = [
+      { value: "iss605", label: "Ref = atmosphère ; miroir = ISSUE-605" },
+      { value: "new-ref", label: "Nouvelle ref avec miroir avant merge" },
+      { value: "off-screen", label: "Miroir hors champ accepté" },
+    ];
+
+    const CHOICES_J1 = [
+      { value: "approved", label: "Draft → Approved (je signe)" },
+      { value: "merge-draft", label: "Merge PR, approval plus tard" },
+      { value: "wait-602", label: "Draft jusqu’à 1er asset ISSUE-602" },
+    ];
+
+    const CHOICES_J2 = [
+      { value: "human-only", label: "Moi seulement — pas d’autres issues" },
+      { value: "ad-hoc", label: "Mises à jour ad hoc (design gap)" },
+      { value: "m5-review", label: "Révision à chaque milestone M5" },
+    ];
+
+    const CHOICES_K3 = [
+      { value: "yes-all", label: "✅ PR après intégration réponses" },
+      { value: "yes-as-is", label: "✅ PR tel quel (minimal)" },
+      { value: "no", label: "❌ Pas encore — il manque des éléments" },
+    ];
+
+    const ITEMS = [
+      { section: "section-scope", id: "a1", title: "A1 — Niveau de détail du guide", issue: "ISSUE-601", rules: "—", choices: CHOICES_SCOPE_A1 },
+      { section: "section-scope", id: "a2", title: "A2 — Périmètre art vs UI/gameplay", issue: "ISSUE-601", rules: "§11", choices: CHOICES_SCOPE_A2 },
+
+      { section: "section-reflection", id: "b1", title: "B1 — 🔒 Phase 1 vs Reflection Mode (distinction)", issue: "#40", rules: "§4", locked: true, choices: CHOICES_DEFAULT,
+        prompt: "Anomalies subtiles C0–1 (vitrines, flaques) ≠ inversion thermique C3+." },
+      { section: "section-reflection", id: "b2", title: "B2 — Surfaces Phase 1 à lister", issue: "#40", rules: "§4", choices: CHOICES_B2 },
+      { section: "section-reflection", id: "b3", title: "B3 — Description visuelle anomalie Phase 1", issue: "#40", rules: "§4", choices: CHOICES_B3 },
+      { section: "section-reflection", id: "b4", title: "B4 — 🔒 Interdire variantes peintes Reflection Mode", issue: "ISSUE-306", rules: "§9", locked: true, choices: CHOICES_YES_NO_TBD,
+        prompt: "Shader only — pas de doubles backgrounds peints sauf layers séparés ?" },
+
+      { section: "section-apartment", id: "c1", title: "C1 — § dédié « Domestic safe space »", issue: "ISSUE-602", rules: "§8", choices: CHOICES_DEFAULT },
+      { section: "section-apartment", id: "c2", title: "C2 — Palette appartement", issue: "ISSUE-602", rules: "§8", choices: CHOICES_C2 },
+      { section: "section-apartment", id: "c3", title: "C3 — Tableau dégradation par cycle", issue: "ISSUE-603", rules: "§8", choices: CHOICES_C3 },
+      { section: "section-apartment", id: "c4", title: "C4 — Message clé pour artistes", issue: "—", rules: "§8", choices: [
+        { value: "contamination", label: "« L’extérieur contamine l’intérieur »" },
+        { value: "false-normal", label: "« Fausse normalité en ouverture de cycle »" },
+        { value: "both", label: "Les deux messages" },
+        { value: "skip", label: "⏭ Implicite" },
+      ]},
+
+      { section: "section-cycles", id: "d1", title: "D1 — Évolution visuelle des districts", issue: "ISSUE-604", rules: "§2", choices: CHOICES_D1 },
+      { section: "section-cycles", id: "d2", title: "D2 — Café change-t-il entre cycles (décor) ?", issue: "ISSUE-605", rules: "§7", choices: CHOICES_D2 },
+      { section: "section-cycles", id: "d3", title: "D3 — Pic visuel = scène café (écrire explicitement)", issue: "—", rules: "§2", choices: CHOICES_YES_NO_TBD },
+
+      { section: "section-npc", id: "e1", title: "E1 — Grammaire visuelle NPC (hors animation)", issue: "ISSUE-607", rules: "§9, §16", choices: CHOICES_DEFAULT,
+        prompt: "Hostile latent vs benevolent : lumière, posture, densité de ligne." },
+      { section: "section-npc", id: "e2", title: "E2 — 🔒 Anti-patterns hostile (pas cartoon-villain)", issue: "—", rules: "§16", locked: true, choices: CHOICES_YES_NO_TBD },
+      { section: "section-npc", id: "e3", title: "E3 — Précisions dissociation (silhouettes)", issue: "ISSUE-304", rules: "§6.1", choices: [
+        { value: "layer", label: "Layer silhouette obligatoire" },
+        { value: "flat", label: "Palette plate + pas de visage" },
+        { value: "both", label: "Les deux + exemple" },
+        { value: "current", label: "⏭ Ligne actuelle §4 suffit" },
+      ]},
+      { section: "section-npc", id: "e4", title: "E4 — Post-Elena (3ᵉ état saturation)", issue: "—", rules: "§5", choices: CHOICES_DEFAULT },
+
+      { section: "section-hud", id: "f1", title: "F1 — Safe zones 1920×1080 (HUD)", issue: "ISSUE-408", rules: "§11", choices: CHOICES_DEFAULT,
+        prompt: "Verb bar bas-gauche, inventaire bas, monologue centre-bas, district bas-droite." },
+      { section: "section-hud", id: "f2", title: "F2 — Hotspots narratifs à protéger", issue: "ISSUE-201", rules: "§7", choices: [
+        { value: "per-district", label: "Lister par district" },
+        { value: "principles", label: "Principes généraux seulement" },
+        { value: "skip", label: "⏭ Dans les scènes / issues" },
+        { value: "discuss", label: "❓ À discuter" },
+      ]},
+      { section: "section-hud", id: "f3", title: "F3 — Rappel « ce que l’UI ne montre jamais »", issue: "—", rules: "§11", choices: CHOICES_YES_NO_TBD },
+
+      { section: "section-cafe", id: "g1", title: "G1 — Rôle de cafe-scene.png", issue: "ISSUE-605", rules: "§7", choices: CHOICES_G1,
+        image: "../assets/cafe-scene.png", imageSmall: false },
+      { section: "section-cafe", id: "g2", title: "G2 — Miroir absent de la ref actuelle", issue: "ISSUE-605", rules: "§7", choices: CHOICES_G2 },
+      { section: "section-cafe", id: "g3", title: "G3 — Texte lisible dans les assets (menu, enseignes)", issue: "—", rules: "§12", choices: [
+        { value: "ambiance", label: "Détail ambiance OK, pas de lore" },
+        { value: "no-text", label: "Éviter texte lisible (localisation)" },
+        { value: "artist", label: "⏭ Laisser l’artiste décider" },
+        { value: "discuss", label: "❓ À discuter" },
+      ]},
+
+      { section: "section-tech", id: "h1", title: "H1 — Détail shader / Godot", issue: "ISSUE-301+", rules: "§13", choices: [
+        { value: "current", label: "⏭ Tableau actuel suffit" },
+        { value: "export", label: "+ contraintes export / naming" },
+        { value: "issues", label: "⏭ Détail dans issues shaders" },
+        { value: "discuss", label: "❓ À discuter" },
+      ]},
+      { section: "section-tech", id: "h2", title: "H2 — Format livraison backgrounds", issue: "ISSUE-604", rules: "§13", choices: [
+        { value: "flat", label: "PNG 1920×1080 flat" },
+        { value: "layers", label: "Layers séparés obligatoires" },
+        { value: "both", label: "Les deux selon district" },
+        { value: "discuss", label: "❓ À discuter" },
+      ]},
+      { section: "section-tech", id: "h3", title: "H3 — 🔒 Marionnette only — props / VFX", issue: "—", rules: "§9", locked: true, choices: [
+        { value: "shader-ok", label: "Sprite sheet OK pluie/VFX, pas personnages" },
+        { value: "shader-only", label: "Tout shader / rig" },
+        { value: "current", label: "⏭ État actuel clair" },
+      ]},
+
+      { section: "section-tone", id: "i1", title: "I1 — « Darker than KRZ and Disco »", issue: "—", rules: "§9", choices: [
+        { value: "yes", label: "✅ Contrainte actuelle suffit" },
+        { value: "anti-ref", label: "+ anti-références (pas cozy, pas whimsical…)" },
+        { value: "soften", label: "Adoucir — trop restrictif" },
+        { value: "discuss", label: "❓ À discuter" },
+      ]},
+      { section: "section-tone", id: "i2", title: "I2 — Développer cadrage Hopper", issue: "—", rules: "§9", choices: CHOICES_YES_NO_TBD },
+      { section: "section-tone", id: "i3", title: "I3 — Nom « Urban Grunge Expressionism »", issue: "#40", rules: "§9", choices: [
+        { value: "locked", label: "✅ Verrouiller définitivement" },
+        { value: "draft", label: "Rester en draft" },
+        { value: "rename", label: "❓ Renommer (note ci-dessous)" },
+      ]},
+
+      { section: "section-governance", id: "j1", title: "J1 — Statut cible après tes réponses", issue: "#40", rules: "—", choices: CHOICES_J1 },
+      { section: "section-governance", id: "j2", title: "J2 — Qui maintient ce fichier après #40 ?", issue: "—", rules: "—", choices: CHOICES_J2 },
+      { section: "section-governance", id: "j3-prio-dorian", title: "J3 — Priorité : Dorian Phase 1 / Reflection", issue: "—", rules: "—", choices: [
+        { value: "1", label: "Priorité 1 (urgent)" }, { value: "2", label: "Priorité 2" }, { value: "3", label: "Priorité 3" }, { value: "skip", label: "⏭ Pas cette passe" },
+      ]},
+      { section: "section-governance", id: "j3-prio-apartment", title: "J3 — Priorité : Appartement / dégradation", issue: "—", rules: "—", choices: [
+        { value: "1", label: "Priorité 1" }, { value: "2", label: "Priorité 2" }, { value: "3", label: "Priorité 3" }, { value: "skip", label: "⏭ Pas cette passe" },
+      ]},
+      { section: "section-governance", id: "j3-prio-cycles", title: "J3 — Priorité : Cycles / sawtooth districts", issue: "—", rules: "—", choices: [
+        { value: "1", label: "Priorité 1" }, { value: "2", label: "Priorité 2" }, { value: "3", label: "Priorité 3" }, { value: "skip", label: "⏭ Pas cette passe" },
+      ]},
+      { section: "section-governance", id: "j3-prio-npc", title: "J3 — Priorité : Grammaire visuelle NPC", issue: "—", rules: "—", choices: [
+        { value: "1", label: "Priorité 1" }, { value: "2", label: "Priorité 2" }, { value: "3", label: "Priorité 3" }, { value: "skip", label: "⏭ Pas cette passe" },
+      ]},
+      { section: "section-governance", id: "j3-prio-hud", title: "J3 — Priorité : HUD safe zones", issue: "—", rules: "—", choices: [
+        { value: "1", label: "Priorité 1" }, { value: "2", label: "Priorité 2" }, { value: "3", label: "Priorité 3" }, { value: "skip", label: "⏭ Pas cette passe" },
+      ]},
+      { section: "section-governance", id: "j3-prio-cafe", title: "J3 — Priorité : Café / miroir", issue: "—", rules: "—", choices: [
+        { value: "1", label: "Priorité 1" }, { value: "2", label: "Priorité 2" }, { value: "3", label: "Priorité 3" }, { value: "skip", label: "⏭ Pas cette passe" },
+      ]},
+      { section: "section-governance", id: "j3-prio-elena", title: "J3 — Priorité : Post-Elena", issue: "—", rules: "—", choices: [
+        { value: "1", label: "Priorité 1" }, { value: "2", label: "Priorité 2" }, { value: "3", label: "Priorité 3" }, { value: "skip", label: "⏭ Pas cette passe" },
+      ]},
+    ];
+
+    const SYNTH_ITEMS = [
+      { id: "k1", label: "K1 — En une phrase, ce que le guide doit faire comprendre à un artiste sans RULES.md", placeholder: "Ex. : Urban exhaustion, performed bodies, sanctuary is a lie…" },
+      { id: "k2", label: "K2 — Une chose à ne surtout pas ajouter (scope creep)", placeholder: "Ex. : pas de palette hex par cycle pour le VS…" },
+      { id: "k3", label: "K3 — Prêt pour PR #40 ?", type: "choice", choices: CHOICES_K3 },
+    ];
+
+    const STORAGE_KEY = "justcoffee-visual-style-questionnaire-v1";
+
+    const LABEL_MAP = {};
+    for (const c of [...CHOICES_DEFAULT, ...CHOICES_SCOPE_A1, ...CHOICES_SCOPE_A2, ...CHOICES_YES_NO_TBD,
+      ...CHOICES_B2, ...CHOICES_B3, ...CHOICES_C2, ...CHOICES_C3, ...CHOICES_D1, ...CHOICES_D2,
+      ...CHOICES_G1, ...CHOICES_G2, ...CHOICES_J1, ...CHOICES_J2, ...CHOICES_K3]) {
+      LABEL_MAP[c.value] = c.label;
+    }
+    for (const item of ITEMS) {
+      for (const c of (item.choices || [])) LABEL_MAP[c.value] = c.label;
+    }
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+      catch { return {}; }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function renderItems() {
+      const state = loadState();
+      for (const item of ITEMS) {
+        const host = document.getElementById(item.section);
+        const card = document.createElement("article");
+        card.className = "card" + (item.locked ? " locked" : "");
+        card.dataset.id = item.id;
+
+        const lock = item.locked ? " 🔒" : "";
+        card.innerHTML = `
+          <div class="card-head">
+            <h3>${item.title}${lock}</h3>
+            <div class="meta">${item.issue !== "—" ? `Issue <code>${item.issue}</code>` : ""} ${item.rules !== "—" ? `· RULES.md <code>${item.rules}</code>` : ""}</div>
+          </div>
+          ${item.prompt ? `<p class="prompt">${item.prompt}</p>` : ""}
+          <div class="img-host"></div>
+          <div class="choices" role="radiogroup" aria-label="${item.title}"></div>
+          <textarea class="note" placeholder="Commentaire optionnel…" data-note="${item.id}"></textarea>
+        `;
+
+        const imgHost = card.querySelector(".img-host");
+        if (item.image) {
+          const wrap = document.createElement("div");
+          wrap.className = item.imageSmall ? "img-wrap small" : "img-wrap";
+          const img = document.createElement("img");
+          img.alt = item.title;
+          img.loading = "lazy";
+          img.src = item.image;
+          img.onerror = () => {
+            wrap.innerHTML = '<p class="missing">Image introuvable — ouvre ce fichier depuis le repo.</p>';
+          };
+          wrap.appendChild(img);
+          imgHost.appendChild(wrap);
+        } else {
+          imgHost.remove();
+        }
+
+        const choices = card.querySelector(".choices");
+        const choiceList = item.choices || CHOICES_DEFAULT;
+        for (const c of choiceList) {
+          const label = document.createElement("label");
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = item.id;
+          input.value = c.value;
+          if (state[item.id]?.choice === c.value) input.checked = true;
+          input.addEventListener("change", () => {
+            const s = loadState();
+            s[item.id] = { ...(s[item.id] || {}), choice: c.value };
+            saveState(s);
+            updateProgress();
+          });
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(c.label));
+          choices.appendChild(label);
+        }
+
+        const note = card.querySelector(".note");
+        if (state[item.id]?.note) note.value = state[item.id].note;
+        note.addEventListener("input", () => {
+          const s = loadState();
+          s[item.id] = { ...(s[item.id] || {}), note: note.value };
+          saveState(s);
+        });
+
+        host.appendChild(card);
+      }
+    }
+
+    function renderSynth() {
+      const state = loadState();
+      const host = document.getElementById("section-synth");
+      for (const s of SYNTH_ITEMS) {
+        const card = document.createElement("article");
+        card.className = "card synth-card";
+        if (s.type === "choice") {
+          card.innerHTML = `<div class="card-head"><h3>${s.label}</h3></div><div class="choices"></div>`;
+          const choices = card.querySelector(".choices");
+          for (const c of s.choices) {
+            const label = document.createElement("label");
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = s.id;
+            input.value = c.value;
+            if (state[s.id]?.choice === c.value) input.checked = true;
+            input.addEventListener("change", () => {
+              const st = loadState();
+              st[s.id] = { ...(st[s.id] || {}), choice: c.value };
+              saveState(st);
+              updateProgress();
+            });
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(c.label));
+            choices.appendChild(label);
+          }
+        } else {
+          card.innerHTML = `<div class="card-head"><h3>${s.label}</h3></div>`;
+          const ta = document.createElement("textarea");
+          ta.className = "note";
+          ta.placeholder = s.placeholder;
+          ta.dataset.note = s.id;
+          if (state[s.id]?.note) ta.value = state[s.id].note;
+          ta.addEventListener("input", () => {
+            const st = loadState();
+            st[s.id] = { ...(st[s.id] || {}), note: ta.value };
+            saveState(st);
+          });
+          card.appendChild(ta);
+        }
+        host.appendChild(card);
+      }
+    }
+
+    function updateProgress() {
+      const state = loadState();
+      const allIds = [...ITEMS.map((i) => i.id), ...SYNTH_ITEMS.map((s) => s.id)];
+      const answered = allIds.filter((id) => state[id]?.choice || state[id]?.note?.trim()).length;
+      document.getElementById("progress").textContent = `${answered} / ${allIds.length} répondu`;
+    }
+
+    function choiceLabel(value) {
+      return LABEL_MAP[value] || value || "— (non répondu)";
+    }
+
+    function buildExport() {
+      const state = loadState();
+      const lines = [
+        "## Questionnaire VISUAL_STYLE.md — Just Coffee (#40)",
+        "",
+        "Réponses pour intégration dans `docs/VISUAL_STYLE.md` sur `issue/40-visual-style-guide`.",
+        "",
+      ];
+
+      let currentSection = "";
+      for (const item of ITEMS) {
+        const sectionTitle = document.querySelector(`#${item.section} h2`)?.textContent || item.section;
+        if (sectionTitle !== currentSection) {
+          currentSection = sectionTitle;
+          lines.push(`### ${sectionTitle}`, "");
+        }
+        const entry = state[item.id];
+        const label = entry?.choice ? choiceLabel(entry.choice) : "— (non répondu)";
+        lines.push(`- **${item.title}** → ${label}`);
+        if (entry?.note?.trim()) lines.push(`  - Note: ${entry.note.trim()}`);
+      }
+
+      lines.push("", "### K — Synthèse", "");
+      for (const s of SYNTH_ITEMS) {
+        const entry = state[s.id];
+        if (s.type === "choice") {
+          lines.push(`- **${s.label}** → ${entry?.choice ? choiceLabel(entry.choice) : "— (non répondu)"}`);
+        } else if (entry?.note?.trim()) {
+          lines.push(`- **${s.label}**`, `  > ${entry.note.trim()}`);
+        } else {
+          lines.push(`- **${s.label}** → — (vide)`);
+        }
+      }
+
+      lines.push("", "---", "Généré depuis docs/visual-style-questionnaire.html");
+      return lines.join("\n");
+    }
+
+    document.getElementById("btn-export").addEventListener("click", () => {
+      document.getElementById("export").value = buildExport();
+    });
+
+    document.getElementById("btn-copy").addEventListener("click", async () => {
+      const text = document.getElementById("export").value || buildExport();
+      document.getElementById("export").value = text;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        document.getElementById("export").select();
+      }
+    });
+
+    document.getElementById("btn-clear").addEventListener("click", () => {
+      if (confirm("Effacer toutes les réponses enregistrées ?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    });
+
+    renderItems();
+    renderSynth();
+    updateProgress();
+  </script>
+</body>
+</html>
