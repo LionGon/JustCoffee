@@ -85,6 +85,8 @@ Godot scaffold and folder tree per [`RULES.md` §13](RULES.md#13-technical-archi
 
 - `scenes/ui/event_bus_test.tscn` — emit and receive all EventBus signals ([#5](https://github.com/LionGon/JustCoffee/issues/5))
 - `scenes/ui/localization_test.tscn` — FR/EN toggle and string lookup ([#10](https://github.com/LionGon/JustCoffee/issues/10))
+- `scenes/ui/saturation_test.tscn` — keyboard saturation debug ([#8](https://github.com/LionGon/JustCoffee/issues/8))
+- `scenes/ui/core_test.tscn` — full autoload integration test (ISSUE-108, not yet implemented)
 - `scenes/ui/core_test.tscn` — full autoload integration test (ISSUE-108, not yet implemented)
 
 ## License
