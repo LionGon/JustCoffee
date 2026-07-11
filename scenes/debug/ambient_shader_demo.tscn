@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://by17bdj2obacy"]
+
+[ext_resource type="Script" uid="uid://d2l7d1s8gb5so" path="res://scenes/debug/ambient_shader_demo.gd" id="1_demo"]
+[ext_resource type="Texture2D" uid="uid://dvy3k3k0lyo1w" path="res://assets/cafe-scene.png" id="2_cafe"]
+
+[node name="AmbientShaderDemo" type="Control" unique_id=1600941974]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_demo")
+
+[node name="CafeBackground" type="TextureRect" parent="." unique_id=203730923]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cafe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SteamLayer" type="ColorRect" parent="." unique_id=877081789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
+
+[node name="RainOverlay" type="ColorRect" parent="." unique_id=131162453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
+
+[node name="SteamZoneFrame" type="ColorRect" parent="." unique_id=900000001]
+layout_mode = 1
+anchor_left = 0.58
+anchor_top = 0.28
+anchor_right = 0.88
+anchor_bottom = 0.58
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.95, 0.75, 0.35, 0.0)
+
+[node name="SteamBorder" type="ReferenceRect" parent="SteamZoneFrame" unique_id=900000002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0.95, 0.7, 0.25, 0.85)
+border_width = 2.0
+editor_only = false
+
+[node name="SteamLabel" type="Label" parent="SteamZoneFrame" unique_id=900000003]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "VAPEUR — machine espresso (droite)"
+horizontal_alignment = 1
+
+[node name="CupSteamFrame" type="ColorRect" parent="." unique_id=900000004]
+layout_mode = 1
+anchor_left = 0.12
+anchor_top = 0.48
+anchor_right = 0.38
+anchor_bottom = 0.72
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.95, 0.75, 0.35, 0.0)
+
+[node name="CupBorder" type="ReferenceRect" parent="CupSteamFrame" unique_id=900000005]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0.85, 0.55, 0.3, 0.65)
+border_width = 2.0
+editor_only = false
+
+[node name="CupLabel" type="Label" parent="CupSteamFrame" unique_id=900000006]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9, 0.65, 0.35, 1)
+theme_override_font_sizes/font_size = 14
+text = "vapeur légère — tasse (gauche)"
+horizontal_alignment = 1
+
+[node name="ToggleBar" type="HBoxContainer" parent="." unique_id=900000020]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -52.0
+offset_right = 360.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ToggleRain" type="CheckBox" parent="ToggleBar" unique_id=900000021]
+layout_mode = 2
+button_pressed = true
+text = "Pluie (P)"
+
+[node name="ToggleFlicker" type="CheckBox" parent="ToggleBar" unique_id=900000022]
+layout_mode = 2
+button_pressed = true
+text = "Flicker (F)"
+
+[node name="ToggleSteam" type="CheckBox" parent="ToggleBar" unique_id=900000023]
+layout_mode = 2
+button_pressed = true
+text = "Vapeur (V)"
+
+[node name="ToggleBreathe" type="CheckBox" parent="ToggleBar" unique_id=900000024]
+layout_mode = 2
+button_pressed = true
+text = "Respiration (B)"
+
+[node name="GuidePanel" type="PanelContainer" parent="." unique_id=900000010]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -440.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 280.0
+grow_horizontal = 0
+
+[node name="GuideVBox" type="VBoxContainer" parent="GuidePanel" unique_id=900000012]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatusLabel" type="Label" parent="GuidePanel/GuideVBox" unique_id=900000013]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Pluie ON · Flicker ON · Vapeur ON · Respiration ON"
+
+[node name="GuideText" type="Label" parent="GuidePanel/GuideVBox" unique_id=900000011]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Toggles (clic ou clavier) :
+P Pluie · F Flicker · V Vapeur · B Respiration
+
+Mode solo (un seul effet) :
+1 Pluie · 2 Flicker · 3 Vapeur · 4 Respiration
+0 = tout réactiver
+
+H = masquer ce guide
+
+VAPEUR seule (touche 3) : effet renforcé.
+Zone principale : machine espresso (droite).
+Zone secondaire : tasse renversée (gauche)."
+autowrap_mode = 3
+
+[connection signal="toggled" from="ToggleBar/ToggleRain" to="." method="_on_toggle_rain_toggled"]
+[connection signal="toggled" from="ToggleBar/ToggleFlicker" to="." method="_on_toggle_flicker_toggled"]
+[connection signal="toggled" from="ToggleBar/ToggleSteam" to="." method="_on_toggle_steam_toggled"]
+[connection signal="toggled" from="ToggleBar/ToggleBreathe" to="." method="_on_toggle_breathe_toggled"]
