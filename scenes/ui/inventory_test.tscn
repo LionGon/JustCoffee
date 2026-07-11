@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cnvnuy01ouag3"]
+
+[ext_resource type="Script" uid="uid://b75usf8xwqwbo" path="res://scenes/ui/inventory_test.gd" id="1_test"]
+
+[node name="InventoryTest" type="Control" unique_id=884955165]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="." unique_id=309021781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.07, 0.09, 1)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=402961721]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -160.0
+offset_right = 320.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBox" unique_id=576979733]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "InventoryManager test (ISSUE-105)"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="VBox" unique_id=598680384]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HintLabel" type="Label" parent="VBox" unique_id=779641112]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "P : phone · H : headphones · E : eyes down · F : fake call"
+horizontal_alignment = 1
+autowrap_mode = 2
