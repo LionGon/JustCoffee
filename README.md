@@ -78,8 +78,9 @@ Godot scaffold and folder tree per [`RULES.md` §13](RULES.md#13-technical-archi
 1. Read [`RULES.md`](RULES.md) in full before any change.
 2. Read [`CONTRIBUTING.md`](CONTRIBUTING.md).
 3. Art contributors: read [`docs/VISUAL_STYLE.md`](docs/VISUAL_STYLE.md) ([#40](https://github.com/LionGon/JustCoffee/issues/40)).
-4. Pick an issue from the backlog; respect dependency order in [`tasks/PRODUCTION_PLAN.md`](tasks/PRODUCTION_PLAN.md).
-5. File bugs, features, or design gaps via the [issue templates](https://github.com/LionGon/JustCoffee/issues/new/choose) (blank issues disabled).
+4. Writers / Dialogic: read [`docs/DIALOGUE_CONVENTION.md`](docs/DIALOGUE_CONVENTION.md) ([#50](https://github.com/LionGon/JustCoffee/issues/50)).
+5. Pick an issue from the backlog; respect dependency order in [`tasks/PRODUCTION_PLAN.md`](tasks/PRODUCTION_PLAN.md).
+6. File bugs, features, or design gaps via the [issue templates](https://github.com/LionGon/JustCoffee/issues/new/choose) (blank issues disabled).
 
 ## Dev tools
 
@@ -91,6 +92,7 @@ Godot scaffold and folder tree per [`RULES.md` §13](RULES.md#13-technical-archi
 - `scenes/debug/ambient_shader_demo.tscn` — rain, steam, lamp flicker shaders ([#23](https://github.com/LionGon/JustCoffee/issues/23))
 - `scenes/debug/audio_bus_test.tscn` — bus layout + saturation muffling ([#33](https://github.com/LionGon/JustCoffee/issues/33))
 - Audio bus layout: [`docs/AUDIO.md`](docs/AUDIO.md) ([#33](https://github.com/LionGon/JustCoffee/issues/33))
+- Dialogue paths: [`docs/DIALOGUE_CONVENTION.md`](docs/DIALOGUE_CONVENTION.md) — 38 VS placeholder `.dtl` files ([#50](https://github.com/LionGon/JustCoffee/issues/50))
 - `scenes/ui/core_test.tscn` — full autoload integration test (ISSUE-108, not yet implemented)
 
 ## License
