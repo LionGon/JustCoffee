@@ -11,3 +11,21 @@ pause.resume,Reprendre
 pause.language,Langue
 pause.quit,Quitter
 outfit.discretion,Discrétion estimée : Haute
+item.phone_screen_on.name,Écran allumé
+item.phone_screen_on.description,Bloque l'analyse du regard — perte de données environnementales
+item.phone_screen_on.cost,Perte de contexte visuel
+item.headphones.name,Écouteurs
+item.headphones.description,Atténue l'audio hostile
+item.headphones.cost,Vecteurs de regard imprévisibles
+item.alternative_route.name,Itinéraire alternatif
+item.alternative_route.description,Contournement narratif
+item.alternative_route.cost,+8 min
+item.fake_phone_call.name,Faux appel
+item.fake_phone_call.description,Désamorce unique
+item.fake_phone_call.cost,Usage unique
+item.eyes_down.name,Yeux baissés
+item.eyes_down.description,Posture soutenue
+item.eyes_down.cost,Drain de saturation soutenu
+item.keys_between_fingers.name,Clés entre les doigts
+item.keys_between_fingers.description,Toujours dans l'inventaire
+item.keys_between_fingers.cost,Narratif seulement

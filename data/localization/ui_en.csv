@@ -11,3 +11,21 @@ pause.resume,Resume
 pause.language,Language
 pause.quit,Quit
 outfit.discretion,Estimated Discretion: High
+item.phone_screen_on.name,Screen on
+item.phone_screen_on.description,Blocks gaze analysis — lose environmental data
+item.phone_screen_on.cost,Lost visual context
+item.headphones.name,Headphones
+item.headphones.description,Muffles hostile audio
+item.headphones.cost,Unpredictable gaze vectors
+item.alternative_route.name,Alternative route
+item.alternative_route.description,Narrative detour
+item.alternative_route.cost,+8 min
+item.fake_phone_call.name,Fake phone call
+item.fake_phone_call.description,One-shot defuse
+item.fake_phone_call.cost,Single use
+item.eyes_down.name,Eyes down
+item.eyes_down.description,Sustained posture
+item.eyes_down.cost,Sustained saturation drain
+item.keys_between_fingers.name,Keys between fingers
+item.keys_between_fingers.description,Always in inventory
+item.keys_between_fingers.cost,Narrative only
