@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://1hcdk7kksg77"]
+
+[ext_resource type="Script" uid="uid://b0le7piwgfwcl" path="res://scenes/debug/audio_bus_test.gd" id="1_test"]
+
+[node name="AudioBusTest" type="Control" unique_id=78920192]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="." unique_id=986627292]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.07, 0.09, 1)
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="." unique_id=213502857]
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=161705232]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -80.0
+offset_right = 360.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBox" unique_id=903867830]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Audio bus test (ISSUE-501)"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="VBox" unique_id=452309899]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
