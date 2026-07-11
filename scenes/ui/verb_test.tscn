@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://verbtest01"]
+
+[ext_resource type="Script" uid="uid://bgilas16tufwt" path="res://scenes/ui/verb_test.gd" id="1_test"]
+
+[node name="VerbTest" type="Control" unique_id=1630210355]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1553835714]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.07, 0.09, 1)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1100562627]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="VBox" unique_id=1265042510]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Verb system test (ISSUE-107)"
+
+[node name="CycleLabel" type="Label" parent="VBox" unique_id=766719940]
+layout_mode = 2
+text = "Narrative cycle: 0"
+
+[node name="HintLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+text = "F1–F4 = change cycle · ↑↓ = move · Enter = select"
+
+[node name="VerbListLabel" type="Label" parent="VBox" unique_id=1955619489]
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+
+[node name="SelectedLabel" type="Label" parent="VBox" unique_id=2130188102]
+layout_mode = 2
+text = "Selected: OBSERVER / OBSERVE"
+
+[node name="ActionLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+text = ""
