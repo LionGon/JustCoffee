@@ -89,6 +89,8 @@ Godot scaffold and folder tree per [`RULES.md` §13](RULES.md#13-technical-archi
 - `scenes/ui/inventory_test.tscn` — strategy inventory hooks ([#9](https://github.com/LionGon/JustCoffee/issues/9))
 - `scenes/ui/verb_test.tscn` — verb cycle gating ([#11](https://github.com/LionGon/JustCoffee/issues/11))
 - `scenes/debug/ambient_shader_demo.tscn` — rain, steam, lamp flicker shaders ([#23](https://github.com/LionGon/JustCoffee/issues/23))
+- `scenes/debug/audio_bus_test.tscn` — bus layout + saturation muffling ([#33](https://github.com/LionGon/JustCoffee/issues/33))
+- Audio bus layout: [`docs/AUDIO.md`](docs/AUDIO.md) ([#33](https://github.com/LionGon/JustCoffee/issues/33))
 - `scenes/ui/core_test.tscn` — full autoload integration test (ISSUE-108, not yet implemented)
 
 ## License

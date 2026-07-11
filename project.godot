@@ -31,12 +31,13 @@ LocalizationManager="*res://core/localization_manager.gd"
 GameFlags="*res://core/game_flags.gd"
 Dialogic="*uid://ds2q0uclmolvu"
 DialogicBridge="*res://core/dialogic_bridge.gd"
+AudioSaturationController="*res://scripts/systems/audio_saturation_controller.gd"
 
 [dialogic]
 
 directories/dtl_directory={
-"sample_greeting_en": "res://data/dialogues/en/cycle_0/sample_greeting.dtl",
-"sample_greeting_fr": "res://data/dialogues/fr/cycle_0/sample_greeting.dtl"
+"cycle_0/sample_greeting": "res://data/dialogues/en/cycle_0/sample_greeting.dtl",
+"sample_greeting": "res://data/dialogues/fr/cycle_0/sample_greeting.dtl"
 }
 variables={
 "cafe_spill_occurred": {
