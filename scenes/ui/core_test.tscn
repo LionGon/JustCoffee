@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3 uid="uid://coretestscene01"]
+
+[ext_resource type="Script" path="res://scenes/ui/core_test.gd" id="1_script"]
+
+[node name="CoreTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.07, 0.09, 1)
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Core integration test (ISSUE-108)"
+horizontal_alignment = 1
+
+[node name="StateLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Loading..."
+
+[node name="SaturationLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Dev only — saturation"
+
+[node name="DissociationLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Dissociation"
+
+[node name="Controls" type="VBoxContainer" parent="Scroll/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SatRow" type="HBoxContainer" parent="Scroll/VBox/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SatPlusButton" type="Button" parent="Scroll/VBox/Controls/SatRow"]
+layout_mode = 2
+text = "+ Saturation"
+
+[node name="SatMinusButton" type="Button" parent="Scroll/VBox/Controls/SatRow"]
+layout_mode = 2
+text = "− Saturation"
+
+[node name="DistrictRow" type="HBoxContainer" parent="Scroll/VBox/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NextDistrictButton" type="Button" parent="Scroll/VBox/Controls/DistrictRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next district"
+
+[node name="Cycle0Button" type="Button" parent="Scroll/VBox/Controls/DistrictRow"]
+layout_mode = 2
+text = "Cycle 0"
+
+[node name="Cycle1Button" type="Button" parent="Scroll/VBox/Controls/DistrictRow"]
+layout_mode = 2
+text = "Cycle 1"
+
+[node name="ExtraRow" type="HBoxContainer" parent="Scroll/VBox/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ToggleLocaleButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow"]
+layout_mode = 2
+text = "Toggle FR / EN"
+
+[node name="UsePhoneButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow"]
+layout_mode = 2
+text = "Use phone (inventory)"
+
+[node name="ToggleElenaFlagButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow"]
+layout_mode = 2
+text = "Toggle elena_gaze flag"
+
+[node name="VerbTitle" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+text = "Select verb (emits verb_selected):"
+
+[node name="VerbGrid" type="GridContainer" parent="Scroll/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="EventLogLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "EventBus log (dev):"

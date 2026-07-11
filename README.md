@@ -93,7 +93,7 @@ Godot scaffold and folder tree per [`RULES.md` §13](RULES.md#13-technical-archi
 - `scenes/debug/audio_bus_test.tscn` — bus layout + saturation muffling ([#33](https://github.com/LionGon/JustCoffee/issues/33))
 - Audio bus layout: [`docs/AUDIO.md`](docs/AUDIO.md) ([#33](https://github.com/LionGon/JustCoffee/issues/33))
 - Dialogue paths: [`docs/DIALOGUE_CONVENTION.md`](docs/DIALOGUE_CONVENTION.md) — 38 VS placeholder `.dtl` files ([#50](https://github.com/LionGon/JustCoffee/issues/50))
-- `scenes/ui/core_test.tscn` — full autoload integration test (ISSUE-108, not yet implemented)
+- `scenes/ui/core_test.tscn` — full autoload integration test ([#12](https://github.com/LionGon/JustCoffee/issues/12))
 
 ## License
 
