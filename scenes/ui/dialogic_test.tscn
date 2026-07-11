@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cumbxeyidd2i0"]
+
+[ext_resource type="Script" uid="uid://d2i33l3w7t62b" path="res://scenes/ui/dialogic_test.gd" id="1_script"]
+
+[node name="DialogicTest" type="Control" unique_id=1891830233]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=539220104]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -120.0
+offset_right = 320.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="VBox" unique_id=808569553]
+layout_mode = 2
+text = "Dialogic Test (ISSUE-701)"
+horizontal_alignment = 1
+
+[node name="LocaleLabel" type="Label" parent="VBox" unique_id=163389271]
+layout_mode = 2
+text = "Locale: fr"
+
+[node name="ToggleLocaleButton" type="Button" parent="VBox" unique_id=449637685]
+layout_mode = 2
+text = "Toggle FR / EN"
+
+[node name="RunTimelineButton" type="Button" parent="VBox" unique_id=917924664]
+layout_mode = 2
+text = "Run sample_greeting.dtl"
+
+[node name="StatusLabel" type="Label" parent="VBox" unique_id=1943304635]
+layout_mode = 2
+text = "Ready"
+autowrap_mode = 2
