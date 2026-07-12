@@ -3,6 +3,11 @@
 
 Start anchor: 2026-07-01 (ISSUE-001).
 Parallel tracks: core, shaders, audio, art, dialogic overlap where dependencies allow.
+
+Duration rules (see issue_executors.py):
+  - executor:cursor        → baseline dates unchanged
+  - executor:human         → minimum 7-day span if originally shorter
+  - executor:cursor+human  → same 7-day minimum as human
 """
 
 from __future__ import annotations
@@ -28,69 +33,69 @@ SCHEDULE: dict[int, tuple[str, str]] = {
     14: ("2026-07-17", "2026-07-17"),  # ISSUE-202 VerbReceiver
     15: ("2026-07-17", "2026-07-20"),  # ISSUE-203 GazeVector
     16: ("2026-07-21", "2026-07-22"),  # ISSUE-204 NPC FSM
-    17: ("2026-07-15", "2026-07-17"),  # ISSUE-205 movement (parallel 201)
+    17: ("2026-07-15", "2026-07-22"),  # ISSUE-205 movement (parallel 201)
     18: ("2026-07-23", "2026-07-24"),  # ISSUE-206 district template
     # M2 — Shaders (301–305 parallel with components; 304 waits for art rig)
     19: ("2026-07-13", "2026-07-14"),  # ISSUE-301 vignette (parallel post-104)
     20: ("2026-07-15", "2026-07-15"),  # ISSUE-302 desaturation
     21: ("2026-07-16", "2026-07-16"),  # ISSUE-303 camera drift
-    22: ("2026-07-25", "2026-07-26"),  # ISSUE-304 NPC silhouette (needs 606)
+    22: ("2026-07-25", "2026-08-01"),  # ISSUE-304 NPC silhouette (needs 606)
     23: ("2026-07-10", "2026-07-13"),  # ISSUE-305 ambient shaders (parallel)
     24: ("2026-07-17", "2026-07-17"),  # ISSUE-306 reflection stub
     # M3 — UI
-    25: ("2026-07-25", "2026-07-26"),  # ISSUE-401 verb bar
+    25: ("2026-07-25", "2026-08-01"),  # ISSUE-401 verb bar
     26: ("2026-07-27", "2026-07-27"),  # ISSUE-402 inventory bar
     27: ("2026-07-27", "2026-07-28"),  # ISSUE-403 location indicator
-    28: ("2026-07-25", "2026-07-27"),  # ISSUE-404 inner monologue box
-    29: ("2026-07-28", "2026-07-29"),  # ISSUE-405 outfit lying UI
-    30: ("2026-07-31", "2026-08-01"),  # ISSUE-406 pause menu
+    28: ("2026-07-25", "2026-08-01"),  # ISSUE-404 inner monologue box
+    29: ("2026-07-28", "2026-08-04"),  # ISSUE-405 outfit lying UI
+    30: ("2026-07-31", "2026-08-07"),  # ISSUE-406 pause menu
     31: ("2026-07-28", "2026-07-30"),  # ISSUE-407 save system
     32: ("2026-08-02", "2026-08-02"),  # ISSUE-408 HUD composition
     # M4 — Audio (501/505 early parallel with core)
-    33: ("2026-07-10", "2026-07-12"),  # ISSUE-501 audio buses
+    33: ("2026-07-10", "2026-07-17"),  # ISSUE-501 audio buses
     34: ("2026-07-23", "2026-07-24"),  # ISSUE-502 spatial audio
-    35: ("2026-07-14", "2026-07-20"),  # ISSUE-503 piano 8-bar (human)
-    36: ("2026-07-21", "2026-07-21"),  # ISSUE-504 piano placeholders
-    37: ("2026-07-15", "2026-07-19"),  # ISSUE-505 city ambience
-    38: ("2026-07-21", "2026-07-22"),  # ISSUE-506 Elena stinger
-    39: ("2026-07-25", "2026-07-27"),  # ISSUE-507 café SFX
+    35: ("2026-07-14", "2026-07-21"),  # ISSUE-503 piano 8-bar (human)
+    36: ("2026-07-21", "2026-07-28"),  # ISSUE-504 piano placeholders
+    37: ("2026-07-15", "2026-07-22"),  # ISSUE-505 city ambience
+    38: ("2026-07-21", "2026-07-28"),  # ISSUE-506 Elena stinger
+    39: ("2026-07-25", "2026-08-01"),  # ISSUE-507 café SFX
     # M5 — Art
-    40: ("2026-07-07", "2026-07-08"),  # ISSUE-601 style guide
-    41: ("2026-07-11", "2026-07-16"),  # ISSUE-602 apartment C0
-    42: ("2026-07-21", "2026-07-22"),  # ISSUE-603 apartment C1 decay
+    40: ("2026-07-07", "2026-07-14"),  # ISSUE-601 style guide
+    41: ("2026-07-11", "2026-07-18"),  # ISSUE-602 apartment C0
+    42: ("2026-07-21", "2026-07-28"),  # ISSUE-603 apartment C1 decay
     43: ("2026-07-13", "2026-07-20"),  # ISSUE-604 district backgrounds
-    44: ("2026-07-21", "2026-07-26"),  # ISSUE-605 café interior
-    45: ("2026-07-17", "2026-07-22"),  # ISSUE-606 protagonist rig
-    46: ("2026-07-23", "2026-07-28"),  # ISSUE-607 NPC rigs
-    47: ("2026-07-24", "2026-07-25"),  # ISSUE-608 bus shelter
-    48: ("2026-07-27", "2026-07-29"),  # ISSUE-609 reflection anomaly art
+    44: ("2026-07-21", "2026-07-28"),  # ISSUE-605 café interior
+    45: ("2026-07-17", "2026-07-24"),  # ISSUE-606 protagonist rig
+    46: ("2026-07-23", "2026-07-30"),  # ISSUE-607 NPC rigs
+    47: ("2026-07-24", "2026-07-31"),  # ISSUE-608 bus shelter
+    48: ("2026-07-27", "2026-08-03"),  # ISSUE-609 reflection anomaly art
     # M6 — Dialogic & narrative pipeline
     49: ("2026-07-08", "2026-07-09"),  # ISSUE-701 Dialogic install
     50: ("2026-07-10", "2026-07-10"),  # ISSUE-702 dialogue naming
-    51: ("2026-07-28", "2026-07-30"),  # ISSUE-703 monologue separation
-    52: ("2026-07-31", "2026-08-01"),  # ISSUE-704 writing guide
+    51: ("2026-07-28", "2026-08-04"),  # ISSUE-703 monologue separation
+    52: ("2026-07-31", "2026-08-07"),  # ISSUE-704 writing guide
     53: ("2026-08-02", "2026-08-10"),  # ISSUE-705 Cycle 0 scripts
     54: ("2026-08-11", "2026-08-19"),  # ISSUE-706 Cycle 0 implementation
-    55: ("2026-08-20", "2026-08-22"),  # ISSUE-707 Cycle 1 opening
-    56: ("2026-08-02", "2026-08-02"),  # ISSUE-708 pause flavor text
-    57: ("2026-08-03", "2026-08-03"),  # ISSUE-709 gaze strings café
+    55: ("2026-08-20", "2026-08-27"),  # ISSUE-707 Cycle 1 opening
+    56: ("2026-08-02", "2026-08-09"),  # ISSUE-708 pause flavor text
+    57: ("2026-08-03", "2026-08-10"),  # ISSUE-709 gaze strings café
     # M8 — Cycle 1 & café (902 parallel 901; 908 parallel café build)
-    58: ("2026-08-23", "2026-08-27"),  # ISSUE-901 C1 district traversal
-    59: ("2026-08-23", "2026-08-28"),  # ISSUE-902 C1 narrative scripts
-    60: ("2026-08-29", "2026-09-02"),  # ISSUE-903 café environment
-    61: ("2026-09-03", "2026-09-05"),  # ISSUE-904 café beats 1–5
-    62: ("2026-09-06", "2026-09-10"),  # ISSUE-905 café beats 6–10 LOCKED
-    63: ("2026-09-11", "2026-09-12"),  # ISSUE-906 dialogue trees B & C
-    64: ("2026-09-13", "2026-09-14"),  # ISSUE-907 return home
-    65: ("2026-09-03", "2026-09-05"),  # ISSUE-908 Dorian beats (parallel 904)
+    58: ("2026-08-23", "2026-08-30"),  # ISSUE-901 C1 district traversal
+    59: ("2026-08-23", "2026-08-30"),  # ISSUE-902 C1 narrative scripts
+    60: ("2026-08-29", "2026-09-05"),  # ISSUE-903 café environment
+    61: ("2026-09-03", "2026-09-10"),  # ISSUE-904 café beats 1–5
+    62: ("2026-09-06", "2026-09-13"),  # ISSUE-905 café beats 6–10 LOCKED
+    63: ("2026-09-11", "2026-09-18"),  # ISSUE-906 dialogue trees B & C
+    64: ("2026-09-13", "2026-09-20"),  # ISSUE-907 return home
+    65: ("2026-09-03", "2026-09-10"),  # ISSUE-908 Dorian beats (parallel 904)
     66: ("2026-07-07", "2026-08-15"),  # ISSUE-909 protagonist name (ongoing)
-    67: ("2026-09-15", "2026-09-16"),  # ISSUE-910 main menu flow
+    67: ("2026-09-15", "2026-09-22"),  # ISSUE-910 main menu flow
     68: ("2026-09-17", "2026-09-17"),  # ISSUE-911 strategy list end screen
     # M9 — QA & ship (1003 parallel mid-QA)
-    69: ("2026-09-18", "2026-09-23"),  # ISSUE-1001 QA playthrough script
-    70: ("2026-09-24", "2026-09-26"),  # ISSUE-1002 bilingual audit
+    69: ("2026-09-18", "2026-09-25"),  # ISSUE-1001 QA playthrough script
+    70: ("2026-09-24", "2026-10-01"),  # ISSUE-1002 bilingual audit
     71: ("2026-09-20", "2026-09-21"),  # ISSUE-1003 performance pass
-    72: ("2026-09-27", "2026-09-28"),  # ISSUE-1004 export VS build
+    72: ("2026-09-27", "2026-10-04"),  # ISSUE-1004 export VS build
     73: ("2026-09-29", "2026-09-29"),  # ISSUE-1005 post-VS epics
 }
 
