@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://mo3mxwynv4cr"]
+
+[ext_resource type="Script" uid="uid://dng2652txric5" path="res://scenes/districts/threshold/threshold_apartment_cycle0.gd" id="1_scene"]
+[ext_resource type="Texture2D" uid="uid://si32hdq2j1bj" path="res://assets/backgrounds/threshold_apartment_cycle0.png" id="2_bg"]
+
+[node name="ThresholdApartmentCycle0" type="Control" unique_id=591947308]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scene")
+hide_background_for_layer_test = true
+
+[node name="Checkerboard" type="ColorRect" parent="." unique_id=721067548]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.45, 0.08, 0.35, 1)
+
+[node name="Background" type="TextureRect" parent="." unique_id=1378073876]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Layers" type="Control" parent="." unique_id=691988647]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Hotspots" type="Control" parent="." unique_id=1690644663]
+z_index = 100
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="DebugPanel" type="PanelContainer" parent="." unique_id=2123562357]
+z_index = 200
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1100.0
+offset_bottom = 72.0
+mouse_filter = 2
+
+[node name="DebugLabel" type="Label" parent="DebugPanel" unique_id=1473495733]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "Debug"
+autowrap_mode = 3
+
+[node name="HudSafeZoneGuide" type="Control" parent="." unique_id=2015866697]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="NarrativeZone" type="ReferenceRect" parent="HudSafeZoneGuide" unique_id=370031444]
+editor_only = true
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 820.0
+border_color = Color(0.4, 0.7, 0.5, 0.35)
+
+[node name="InnerMonologueZone" type="ReferenceRect" parent="HudSafeZoneGuide" unique_id=1671936588]
+editor_only = true
+layout_mode = 0
+offset_left = 360.0
+offset_top = 820.0
+offset_right = 1560.0
+offset_bottom = 940.0
+border_color = Color(0.5, 0.5, 0.8, 0.35)
+
+[node name="VerbBarZone" type="ReferenceRect" parent="HudSafeZoneGuide" unique_id=1167369779]
+editor_only = true
+layout_mode = 0
+offset_top = 940.0
+offset_right = 420.0
+offset_bottom = 1080.0
+border_color = Color(0.8, 0.4, 0.4, 0.35)
+
+[node name="InventoryBarZone" type="ReferenceRect" parent="HudSafeZoneGuide" unique_id=796874593]
+editor_only = true
+layout_mode = 0
+offset_left = 420.0
+offset_top = 960.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+border_color = Color(0.8, 0.6, 0.3, 0.35)
+
+[node name="LocationCycleZone" type="ReferenceRect" parent="HudSafeZoneGuide" unique_id=1154232835]
+editor_only = true
+layout_mode = 0
+offset_left = 1500.0
+offset_top = 940.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+border_color = Color(0.6, 0.4, 0.8, 0.35)

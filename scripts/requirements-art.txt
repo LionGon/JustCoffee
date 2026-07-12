@@ -1,0 +1,6 @@
+# Optional art pipeline deps (ISSUE-602 layer extraction).
+# Install in a venv, not system-wide:
+#   python3 -m venv .venv-art && .venv-art/bin/pip install -r scripts/requirements-art.txt
+rembg>=2.0.50
+pillow>=10.0.0
+onnxruntime>=1.16.0
