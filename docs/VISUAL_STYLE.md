@@ -141,15 +141,15 @@ Interactive hotspots: coffee mug, plant, vinyl record, phone, window (city below
 
 ### Decay by cycle (full table)
 
-The apartment **degrades while [PROTAGONIST] is outside**. He returns to a contaminated interior — he did not cause this directly; the outside world is causing it.
+The apartment **degrades while Dorian is outside**. He returns to a contaminated interior — he did not cause this directly; the outside world is causing it.
 
 | Object | Cycle 0 | Cycle 1 | Cycle 2 | Cycle 3 | Cycle 4 |
 |---|---|---|---|---|---|
 | Plant | Healthy | Slightly drooping | Wilting | Dead | Gone |
 | Phone — friend's message | *"T'as survécu ? 🙂"* / *"Did you survive? 🙂"* | Same, unanswered | *"Tout va bien ?"* / *"You ok?"* — tone shifted | *"Hey."* — nothing else | No message |
-| Vinyl | Plays normally | Plays | Skips on one note | Skips constantly | [PROTAGONIST] doesn't put it on |
-| Window light | Warm morning | Same | Harsher, bluer | Cold | [PROTAGONIST] doesn't open the blinds |
-| Coffee mug | Chosen freely | Same | Grabbed without looking | [PROTAGONIST] forgets to drink it | Cup found cold, untouched |
+| Vinyl | Plays normally | Plays | Skips on one note | Skips constantly | Dorian doesn't put it on |
+| Window light | Warm morning | Same | Harsher, bluer | Cold | Dorian doesn't open the blinds |
+| Coffee mug | Chosen freely | Same | Grabbed without looking | Dorian forgets to drink it | Cup found cold, untouched |
 
 ### Messages for artists
 

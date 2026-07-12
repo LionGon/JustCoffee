@@ -49,4 +49,25 @@ var path := "res://data/dialogues/%s/cycle_%d/%s.dtl" % [locale, cycle, scene_id
 
 ## Protagonist name
 
-Dialogue files use `[PROTAGONIST]` until ISSUE-909 is decided. Do not replace in `RULES.md` until human updates the master doc.
+**Decision (ISSUE-909 / #66, 2026-07-12):** **Dorian** — locked by maintainer.
+
+| Field | Value |
+|---|---|
+| **FR / EN** | Dorian (same in both locales) |
+| **Etymology / intent** | Echoes the locked §4 mechanic *Dorian Superposition* (portrait vs. appearance) — deliberate; not spoken in dialogue |
+| **`RULES.md`** | §3 updated — **Dorian** |
+| **Dialogue files** | Use `Dorian` in NPC-facing lines; inner monologue stays nameless |
+
+Writers: replace any `[PROTAGONIST]` placeholder in `data/dialogues/` with `Dorian` when authoring NPC lines. No global replace needed yet — VS `.dtl` files are still empty placeholders.
+
+### Inner monologue — name usage
+
+Per RULES.md §3, inner monologue timelines (`*_monologue.dtl`) **never** use the protagonist's name when it would break intimacy or feel awkward.
+
+| Channel | Name usage |
+|---|---|
+| NPC dialogue | `Dorian` when an NPC addresses or refers to him by name |
+| Inner monologue | First-person, nameless: *"400 mètres. 18 h 43."* — not *"Dorian compte 400 mètres."* |
+| Rare exception | Only if a specific narrative beat requires it — human writer approval |
+
+Voice expresses logistics, rationalizations, and calculations — not direct emotion. Naming the protagonist in inner monologue is almost always wrong.

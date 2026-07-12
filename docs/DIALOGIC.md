@@ -81,6 +81,10 @@ Related dev scenes: `game_flags_test.tscn`, `cycle_state_test.tscn`.
 - NPC lines: standard Dialogic text events with character resources (added in ISSUE-703+).
 - Inner monologue: separate timelines (`*_monologue.dtl`) and layout — never mixed in the same text box (RULES.md §13).
 
-## Protagonist placeholder
+## Protagonist name
 
-Dialogue files use `[PROTAGONIST]` until [design gap #81](https://github.com/LionGon/JustCoffee/issues/81) / ISSUE-909 is resolved.
+**Locked:** **Dorian** ([ISSUE-909](https://github.com/LionGon/JustCoffee/issues/66), 2026-07-12).
+
+- NPC dialogue in `.dtl` files: use `Dorian` when a line needs his name.
+- Inner monologue (`*_monologue.dtl`): nameless first-person — see [`DIALOGUE_CONVENTION.md`](DIALOGUE_CONVENTION.md#inner-monologue--name-usage).
+- `RULES.md` §3: **Dorian** (locked).

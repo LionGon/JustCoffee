@@ -84,7 +84,7 @@ This prevents emotional numbness. The player must experience loss of relief, not
 
 | Field | Value |
 |---|---|
-| **Name** | [PROTAGONIST] — placeholder until named |
+| **Name** | Dorian |
 | **Gender presentation** | Male (Cycle 0) → perceived as female by NPCs (progressive, Cycles 1–4) |
 | **Age** | Early 30s |
 | **Appearance** | Dark coat, average build, deliberately unremarkable |
@@ -111,7 +111,7 @@ The protagonist's inner voice **never** expresses emotions directly. It expresse
 
 ### The Mechanic
 
-NPCs progressively perceive [PROTAGONIST] as a woman. The player does not understand this immediately. It is never stated explicitly until the final mirror in Cycle 4.
+NPCs progressively perceive Dorian as a woman. The player does not understand this immediately. It is never stated explicitly until the final mirror in Cycle 4.
 
 ### The 4-Phase Reveal
 
@@ -120,8 +120,8 @@ Reflections in shop windows, puddles, and spoons are slightly wrong. The silhoue
 
 **Phase 2 — Cycle 2–3: The Dissonance**
 NPC behavior is gendered in ways that contradict what the player sees. Examples:
-- A mother pulls her child away when [PROTAGONIST] passes (reacting to perceived male threat)
-- Other men address [PROTAGONIST] with condescending familiarity
+- A mother pulls her child away when Dorian passes (reacting to perceived male threat)
+- Other men address Dorian with condescending familiarity
 - The Gaze Vectors read differently than the protagonist's behavior would warrant
 Two simultaneous readings of every scene now exist. The game never resolves the contradiction.
 
@@ -136,15 +136,15 @@ This mode is voluntary in Cycle 3.
 Reflection Mode triggers involuntarily. The player does not control when the perspective switches. This is intentional — it is not a bug, it is the point. The loss of control over one's own perception IS the message.
 
 **The Final Mirror — Café, Cycle 4:**
-[PROTAGONIST] stands before the large brass-framed mirror. The player can:
+Dorian stands before the large brass-framed mirror. The player can:
 - Click to look → full explicit revelation
 - Not click → the game ends in total ambiguity
 Both endings are valid. Both are sad. Neither provides resolution.
 
 ### Rules for Writing Scenes with the Dorian Superposition
 
-- NEVER have an NPC explicitly say [PROTAGONIST] is a woman
-- NEVER have [PROTAGONIST]'s inner monologue reference the twist
+- NEVER have an NPC explicitly say Dorian is a woman
+- NEVER have Dorian's inner monologue reference the twist
 - NPC behavioral inconsistencies must be subtle enough to rationalize away in Cycles 1–2
 - In Cycle 3+, inconsistencies become undeniable but still never named
 - The word "woman" / "femme" does not appear in any dialogue until the final mirror scene (if the player chooses to look)
@@ -155,7 +155,7 @@ Both endings are valid. Both are sad. Neither provides resolution.
 
 ### What Happens
 
-At the end of Cycle 0, [PROTAGONIST] makes eye contact with **ELENA** — a woman he has just street-harassed (the nature of the harassment is left partially implicit).
+At the end of Cycle 0, Dorian makes eye contact with **ELENA** — a woman he has just street-harassed (the nature of the harassment is left partially implicit).
 
 **The beat:**
 - No cursor
@@ -313,15 +313,15 @@ The player cannot enter. No explanation is given by the game. The trauma restric
 - NPCs present: MARC (barista, neutral-complicit), THOMAS and KEVIN (patrons)
 
 ### Beat Structure
-1. [PROTAGONIST] enters. Piano theme plays — complete and warm. Only time in the game.
+1. Dorian enters. Piano theme plays — complete and warm. Only time in the game.
 2. Commands cappuccino. Banal interaction with Marc.
 3. Thomas and Kevin enter, sit at adjacent table.
 4. Gaze vectors available: Thomas ("His gaze sweeps the room. You are in the inventory."), Kevin ("He hasn't looked at you yet. Or he has, and you missed the moment.")
-5. Kevin stands, passes [PROTAGONIST]'s table — knocks the cup. Cappuccino spills.
+5. Kevin stands, passes Dorian's table — knocks the cup. Cappuccino spills.
 6. **Sound drops. Piano hits one dissonant note. Loops.**
 7. Kevin: *"Oh, pardon."* Then says something inaudible to Thomas. Thomas almost-smiles.
 8. Marc cleans up. Says: *"Je suis désolé pour ça." / "I'm sorry about that."* — **Marc apologizes instead of Kevin. This is the scene's central act.**
-9. Dialogue tree B & C: choices alter only how [PROTAGONIST] internalizes blame — not the physical outcome.
+9. Dialogue tree B & C: choices alter only how Dorian internalizes blame — not the physical outcome.
 10. Exit: *"400 mètres jusqu'à chez moi. Il est 18h43. Il fait encore jour. C'était juste un café."*
 
 ### Key Line — DO NOT PARAPHRASE OR ALTER
@@ -350,11 +350,11 @@ Palette: warm amber, soft — distinct from all exterior scenes.
 |---|---|---|---|---|---|
 | Plant | Healthy | Slightly drooping | Wilting | Dead | Gone |
 | Phone — friend's message | *"T'as survécu ? 🙂" / "Did you survive? 🙂"* | Same, unanswered | *"Tout va bien ?"* / *"You ok?"* — tone shifted | *"Hey."* — nothing else | No message |
-| Vinyl | Plays normally | Plays | Skips on one note | Skips constantly | [PROTAGONIST] doesn't put it on |
-| Window light | Warm morning | Same | Harsher, bluer | Cold | [PROTAGONIST] doesn't open the blinds |
-| Coffee mug | Chosen freely | Same | Grabbed without looking | [PROTAGONIST] forgets to drink it | Cup is found cold, untouched |
+| Vinyl | Plays normally | Plays | Skips on one note | Skips constantly | Dorian doesn't put it on |
+| Window light | Warm morning | Same | Harsher, bluer | Cold | Dorian doesn't open the blinds |
+| Coffee mug | Chosen freely | Same | Grabbed without looking | Dorian forgets to drink it | Cup is found cold, untouched |
 
-**The apartment degrades while [PROTAGONIST] is outside. He returns and finds the interior contaminated. He did not cause this directly — the outside world is causing it.**
+**The apartment degrades while Dorian is outside. He returns and finds the interior contaminated. He did not cause this directly — the outside world is causing it.**
 
 ---
 
@@ -388,7 +388,7 @@ Saturation gauge affects the perceived world palette:
 
 Reason: The slightly mechanical, rigid quality of marionette/cut-out rigging in Godot 4 (Skeleton2D) reinforces the theme of social scripts — behavior that is learned, performed, and not fully inhabited. This effect must not be smoothed out.
 
-**Animation vocabulary for [PROTAGONIST]:**
+**Animation vocabulary for Dorian:**
 - Idle: subtle weight shift, breathing
 - Walk: deliberate, slightly stiff
 - Shoulders-up: stress micro-animation (Saturation mid-high)
@@ -396,7 +396,7 @@ Reason: The slightly mechanical, rigid quality of marionette/cut-out rigging in 
 - Head-turn: gaze interaction response
 
 **NPC animation rules:**
-- Hostile/neutral NPCs: more mechanical than [PROTAGONIST]
+- Hostile/neutral NPCs: more mechanical than Dorian
 - Benevolent NPCs (grocery shopkeeper): smoother, warmer animation — the only visual signal of safety
 
 ### Backgrounds — Godot Shaders ONLY
@@ -415,7 +415,7 @@ All background motion via Godot shader animation:
 - **Binaural design — headphone use strongly recommended (stated at game launch)**
 - Hostile NPC voices arrive from **behind or beside** — never directly frontal
 - Benevolent NPC voices arrive from **in front, at medium distance**
-- [PROTAGONIST]'s inner monologue: **dead center, no reverb, intimate**
+- Dorian's inner monologue: **dead center, no reverb, intimate**
 - City ambience: **stereo field, always slightly behind the player's perceived position**
 
 ### The Piano Theme — Fragmentation Rules
@@ -466,7 +466,7 @@ Saving the game plays no jingle. No sound. The word *"Demain." / "Tomorrow."* ap
 - Save slots are labeled **"Demain." / "Tomorrow."** — never "Save 1", "Save 2"
 - Autosave at each district transition
 - No manual save during Café scenes
-- The pause menu displays [PROTAGONIST]'s suspended thoughts — not a standard menu
+- The pause menu displays Dorian's suspended thoughts — not a standard menu
 
 ### The Lying Interface
 The UI is permitted to lie in specific, documented moments:
@@ -482,7 +482,7 @@ The UI is permitted to lie in specific, documented moments:
 - Tone in EN must match FR emotional register — some lines will differ significantly
 - No placeholder text in either language at any milestone delivery
 - Language toggle available at any time from pause menu
-- [PROTAGONIST]'s inner monologue may have slight tonal differences between FR/EN — this is acceptable and may be used narratively
+- Dorian's inner monologue may have slight tonal differences between FR/EN — this is acceptable and may be used narratively
 
 ---
 
@@ -564,7 +564,7 @@ Every NPC's gaze and interaction behavior is driven by a State Machine. No NPC l
 enum NPCState {
     IDLE,
     SCANNING,       # Gaze vector sweeping
-    LOCKED_ON,      # Gaze fixed on [PROTAGONIST]
+    LOCKED_ON,      # Gaze fixed on Dorian
     HOSTILE_LATENT, # Behaviorally hostile — never visually obvious
     BENEVOLENT,     # Smoother animation, warmer audio
     COMPLICIT       # Marc (barista) state — neutral enabling
@@ -666,7 +666,7 @@ These are not stylistic preferences. They are structural prohibitions.
 | Audio direction | ✅ Locked |
 | Technical architecture | ✅ Locked |
 | Verb bar — 10 verbs | ✅ Locked |
-| Protagonist name | ⚠️ Placeholder — [PROTAGONIST] |
+| Protagonist name | ✅ Locked — Dorian |
 | Cycle 2 opening — Domestic decay | 🔲 Next milestone |
 | Confrontation dialogue tree | 🔲 Pending |
 | Piano fragmentation — composer brief | 🔲 Pending |
