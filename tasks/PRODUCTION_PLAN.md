@@ -119,7 +119,7 @@ Dates are applied on the [GitHub Project board](https://github.com/users/LionGon
 | M0 Init | Jul 1–6 | #1–#4 sequential |
 | M1 Core | Jul 7–14 | #106 Localization ∥ #101–103; #105 ∥ #104 |
 | M2 Components + Shaders | Jul 10–24 | #301–305, #501, #505 ∥ components; #205 ∥ #201 |
-| M3 UI + M4 Audio + M5 Art | Jul 7–Aug 2 | Three parallel tracks; #503 piano Jul 14–20 |
+| M3 UI + M4 Audio + M5 Art | Jul 7–Aug 2 | Three parallel tracks; #503 piano Jul 14–21 |
 | M6 Narrative | Jul 8–Aug 10 | #701–702 early; #705–706 Aug |
 | M7–M8 Cycles | Aug 11–Sep 17 | #901–902 parallel; #908 ∥ café beats |
 | M9 Ship | Sep 18–29 | #1003 perf ∥ QA |
