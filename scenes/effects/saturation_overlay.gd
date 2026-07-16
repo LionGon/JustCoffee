@@ -1,5 +1,6 @@
 extends Control
-## Full-screen saturation vignette overlay (ISSUE-301).
+## Full-screen saturation vignette + desaturation + dissociation drift overlay
+## (ISSUE-301 / ISSUE-302 / ISSUE-303).
 ## Place after gameplay art and before HUD so BackBufferCopy captures only the world layer.
 
 

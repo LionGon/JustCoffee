@@ -1,13 +1,11 @@
 extends Control
-## ISSUE-302 (#20) — visual comparison for luminance desaturation + vignette.
+## ISSUE-302 (#20) / ISSUE-303 (#21) — visual comparison for desaturation, vignette, drift.
 ##
-## ISSUE-302 is fulfilled via the combined `saturation_vignette.gdshader` applied on a
-## `ColorRect` in `BackBufferCopy` mode (ISSUE-301 vignette + ISSUE-302 desaturation in
-## one pass). Chaining in a single shader follows RULES.md §13 — no SubViewport
-## post-process, stable 1080p cost.
+## Combined `saturation_vignette.gdshader` on a `ColorRect` in `BackBufferCopy` mode
+## (ISSUE-301–303 in one pass). RULES.md §13 — no SubViewport post-process.
 ##
-## Dev-only: buttons jump to fixed levels for screenshot comparison. Production never
-## exposes numeric saturation (SaturationManager drives the same shader uniformly).
+## At ≥0.85, `dissociation_active` enables ±3px sine sample drift (still playable).
+## Dev-only: buttons jump to fixed levels. Production never exposes numeric saturation.
 
 
 @onready var _level_label: Label = $VBox/LevelLabel
@@ -25,11 +23,13 @@ func _set_level(level: float) -> void:
 	SaturationManager.saturation_level = level
 	SaturationManager.apply_saturation()
 	var band: String = "calm"
+	var drift_note: String = "drift off"
 	if level >= 0.85:
 		band = "dissociation"
+		drift_note = "±3px drift on"
 	elif level >= 0.5:
 		band = "mid anxiety"
 	_level_label.text = (
-		"Band: %s — saturation_level = %.2f (0.85 = dissociation threshold)"
-		% [band, level]
+		"Band: %s — saturation_level = %.2f — %s (threshold 0.85)"
+		% [band, level, drift_note]
 	)
