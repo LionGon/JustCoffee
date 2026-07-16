@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://xhepait6aeh1"]
+
+[ext_resource type="Script" uid="uid://bbor1g8wehori" path="res://scenes/debug/player_movement_test.gd" id="1_test"]
+[ext_resource type="Script" uid="uid://qqcudvyco31b" path="res://components/player_controller.gd" id="2_player"]
+[ext_resource type="Script" uid="uid://lmr5y8p5h377" path="res://components/interactable_area.gd" id="3_interactable"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_floor"]
+vertices = PackedVector2Array(80, 520, 1840, 520, 1840, 1000, 80, 1000)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(80, 520, 1840, 520, 1840, 1000, 80, 1000)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bench"]
+size = Vector2(120, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiosk"]
+size = Vector2(100, 140)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
+radius = 14.0
+
+[node name="PlayerMovementTest" type="Node2D" unique_id=575553739]
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="." unique_id=100471221]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.12, 0.11, 0.14, 1)
+
+[node name="WalkableHint" type="ColorRect" parent="." unique_id=118605706]
+offset_left = 80.0
+offset_top = 520.0
+offset_right = 1840.0
+offset_bottom = 1000.0
+mouse_filter = 2
+color = Color(0.18, 0.22, 0.17, 0.35)
+
+[node name="WalkableOutline" type="ReferenceRect" parent="." unique_id=41917749]
+offset_left = 80.0
+offset_top = 520.0
+offset_right = 1840.0
+offset_bottom = 1000.0
+mouse_filter = 2
+border_color = Color(0.45, 0.75, 0.45, 0.8)
+border_width = 2.0
+editor_only = false
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1699133314]
+navigation_polygon = SubResource("NavigationPolygon_floor")
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1609684112]
+
+[node name="BenchHotspot" type="Area2D" parent="Hotspots" unique_id=1845699745]
+position = Vector2(420, 820)
+script = ExtResource("3_interactable")
+interactable_id = "artery_bench"
+enabled_verbs = Array[int]([0, 5])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/BenchHotspot" unique_id=1997989333]
+shape = SubResource("RectangleShape2D_bench")
+
+[node name="DevOutline" type="ColorRect" parent="Hotspots/BenchHotspot" unique_id=460186543]
+offset_left = -60.0
+offset_top = -40.0
+offset_right = 60.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 0.85, 0.4, 0.25)
+
+[node name="KioskHotspot" type="Area2D" parent="Hotspots" unique_id=756538815]
+position = Vector2(1500, 780)
+script = ExtResource("3_interactable")
+interactable_id = "artery_kiosk"
+enabled_verbs = Array[int]([0, 5])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/KioskHotspot" unique_id=1899279252]
+shape = SubResource("RectangleShape2D_kiosk")
+
+[node name="DevOutline" type="ColorRect" parent="Hotspots/KioskHotspot" unique_id=1361322498]
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.85, 0.4, 0.25)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2001026063]
+position = Vector2(960, 900)
+script = ExtResource("2_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1428523445]
+shape = SubResource("CircleShape2D_player")
+
+[node name="Visual" type="Node2D" parent="Player" unique_id=662350948]
+
+[node name="Body" type="ColorRect" parent="Player/Visual" unique_id=1353611539]
+offset_left = -14.0
+offset_top = -56.0
+offset_right = 14.0
+mouse_filter = 2
+color = Color(0.78, 0.74, 0.7, 1)
+
+[node name="Head" type="ColorRect" parent="Player/Visual" unique_id=368880389]
+offset_left = -10.0
+offset_top = -72.0
+offset_right = 10.0
+offset_bottom = -56.0
+mouse_filter = 2
+color = Color(0.85, 0.8, 0.76, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1073255351]
+position = Vector2(960, 540)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=621124809]
+
+[node name="DebugPanel" type="PanelContainer" parent="UI" unique_id=1389807642]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 520.0
+offset_bottom = 260.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/DebugPanel" unique_id=850154699]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="UI/DebugPanel/VBox" unique_id=395982076]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player movement test (ISSUE-205)"
+
+[node name="VerbLabel" type="Label" parent="UI/DebugPanel/VBox" unique_id=889166611]
+layout_mode = 2
+text = "Selected verb: GO"
+
+[node name="DissociationLabel" type="Label" parent="UI/DebugPanel/VBox" unique_id=1419015984]
+layout_mode = 2
+text = "Dissociation: inactive"
+
+[node name="StatusLabel" type="Label" parent="UI/DebugPanel/VBox" unique_id=1640700979]
+layout_mode = 2
+text = "Idle"
+
+[node name="HelpLabel" type="Label" parent="UI/DebugPanel/VBox" unique_id=143882034]
+layout_mode = 2
+text = "Default GO: click floor/hotspot to walk. O = observe next hotspot, then auto back to GO. D = freeze."
+autowrap_mode = 3
+
+[node name="LogLabel" type="Label" parent="UI/DebugPanel/VBox" unique_id=1425024560]
+layout_mode = 2
+text = "Ready."
+autowrap_mode = 3
