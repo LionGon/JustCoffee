@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://exteriordistrict01"]
+
+[ext_resource type="Script" path="res://scenes/districts/exterior_district.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://saturationoverlay01" path="res://scenes/effects/saturation_overlay.tscn" id="2_saturation"]
+
+[node name="ExteriorDistrict" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Placeholder" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.2, 0.19, 0.18, 1)
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 2
+
+[node name="RainOverlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
+
+[node name="Hotspots" type="Control" parent="."]
+z_index = 10
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="SaturationOverlay" parent="." instance=ExtResource("2_saturation")]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HudSafeZoneGuide" type="Control" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="NarrativeZone" type="ReferenceRect" parent="HudSafeZoneGuide"]
+editor_only = true
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 820.0
+border_color = Color(0.4, 0.7, 0.5, 0.35)
+
+[node name="InnerMonologueZone" type="ReferenceRect" parent="HudSafeZoneGuide"]
+editor_only = true
+layout_mode = 0
+offset_left = 360.0
+offset_top = 820.0
+offset_right = 1560.0
+offset_bottom = 940.0
+border_color = Color(0.5, 0.5, 0.8, 0.35)
+
+[node name="VerbBarZone" type="ReferenceRect" parent="HudSafeZoneGuide"]
+editor_only = true
+layout_mode = 0
+offset_top = 940.0
+offset_right = 420.0
+offset_bottom = 1080.0
+border_color = Color(0.8, 0.4, 0.4, 0.35)
+
+[node name="InventoryBarZone" type="ReferenceRect" parent="HudSafeZoneGuide"]
+editor_only = true
+layout_mode = 0
+offset_left = 420.0
+offset_top = 960.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+border_color = Color(0.8, 0.6, 0.3, 0.35)
+
+[node name="LocationCycleZone" type="ReferenceRect" parent="HudSafeZoneGuide"]
+editor_only = true
+layout_mode = 0
+offset_left = 1500.0
+offset_top = 940.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+border_color = Color(0.6, 0.4, 0.8, 0.35)
+
+[node name="DebugPanel" type="PanelContainer" parent="."]
+z_index = 100
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1200.0
+offset_bottom = 72.0
+mouse_filter = 2
+
+[node name="DebugLabel" type="Label" parent="DebugPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "Exterior district"
+autowrap_mode = 3

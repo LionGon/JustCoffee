@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b33vgmr6nf8fx"]
+
+[ext_resource type="PackedScene" uid="uid://exteriordistrict01" path="res://scenes/districts/exterior_district.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scenes/districts/corridor/corridor_main_cycle0.gd" id="2_script"]
+
+[node name="CorridorMainCycle0" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
