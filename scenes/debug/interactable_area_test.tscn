@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2yve4bwvk5j5"]
+
+[ext_resource type="Script" path="res://scenes/debug/interactable_area_test.gd" id="1_test"]
+[ext_resource type="Script" path="res://components/interactable_area.gd" id="2_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+size = Vector2(240, 80)
+
+[node name="InteractableAreaTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12, 0.11, 0.1, 1)
+
+[node name="HotspotLayer" type="Node2D" parent="."]
+position = Vector2(960, 780)
+
+[node name="TestHotspot" type="Area2D" parent="HotspotLayer"]
+script = ExtResource("2_interactable")
+interactable_id = "test_bench"
+cursor_hint = "A worn bench"
+enabled_verbs = Array[int]([0, 5, 8])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotLayer/TestHotspot"]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="DevOutline" type="ColorRect" parent="HotspotLayer/TestHotspot"]
+offset_left = -120.0
+offset_top = -40.0
+offset_right = 120.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 0.85, 0.4, 0.35)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="UI"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 860.0
+offset_bottom = 320.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="UI/Panel/VBox"]
+layout_mode = 2
+mouse_filter = 2
+text = "ISSUE-201 — InteractableArea test"
+horizontal_alignment = 1
+
+[node name="VerbLabel" type="Label" parent="UI/Panel/VBox"]
+layout_mode = 2
+mouse_filter = 2
+text = "Selected verb"
+horizontal_alignment = 1
+
+[node name="VerbRow" type="HBoxContainer" parent="UI/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ObserverButton" type="Button" parent="UI/Panel/VBox/VerbRow"]
+layout_mode = 2
+text = "OBSERVER"
+
+[node name="GoButton" type="Button" parent="UI/Panel/VBox/VerbRow"]
+layout_mode = 2
+text = "GO"
+
+[node name="ForcerButton" type="Button" parent="UI/Panel/VBox/VerbRow"]
+layout_mode = 2
+text = "FORCER"
+
+[node name="CycleRow" type="HBoxContainer" parent="UI/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Cycle0Button" type="Button" parent="UI/Panel/VBox/CycleRow"]
+layout_mode = 2
+text = "Cycle 0"
+
+[node name="Cycle3Button" type="Button" parent="UI/Panel/VBox/CycleRow"]
+layout_mode = 2
+text = "Cycle 3 (FORCER greyed)"
+
+[node name="Hint" type="Label" parent="UI/Panel/VBox"]
+layout_mode = 2
+mouse_filter = 2
+text = "Click the golden hotspot below. GO vs OBSERVER log different outcomes."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LogLabel" type="Label" parent="UI/Panel/VBox"]
+layout_mode = 2
+mouse_filter = 2
+text = "Click log:
+(no clicks yet)"
+horizontal_alignment = 1
