@@ -3,11 +3,17 @@ shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear;
 uniform float saturation_level : hint_range(0.0, 1.0) = 0.0;
 uniform bool post_elena_state = false;
+// ISSUE-303: driven by SaturationManager.dissociation_state() — not a game-over cue.
+uniform bool dissociation_active = false;
 
 const float CLEAR_FOV_AT_MAX = 0.60;
 const float WARM_COOL_MAX = 0.18;
 const vec3 LUMA_WEIGHTS = vec3(0.2126, 0.7152, 0.0722);
 const float MONOCHROME_CAP = 0.97;
+// RULES.md §9 / VISUAL_STYLE §7 — camera drift ±3px while dissociated.
+const float DRIFT_AMPLITUDE_PX = 3.0;
+const float DRIFT_FREQ_X = 0.65;
+const float DRIFT_FREQ_Y = 0.47;
 
 // ISSUE-302: quadratic base + high-band boost — 0.5 stays readable, 0.85 near-monochrome.
 float desaturation_amount(float level) {
@@ -26,7 +32,16 @@ vec3 luminance_desaturate(vec3 rgb, float amount) {
 }
 
 void fragment() {
-	vec4 color = texture(screen_texture, SCREEN_UV);
+	// Full-screen sample offset (sine); vignette stays screen-locked (ISSUE-303).
+	vec2 sample_uv = SCREEN_UV;
+	if (dissociation_active) {
+		vec2 drift_px = vec2(
+			sin(TIME * DRIFT_FREQ_X) * DRIFT_AMPLITUDE_PX,
+			cos(TIME * DRIFT_FREQ_Y) * DRIFT_AMPLITUDE_PX
+		);
+		sample_uv += drift_px * SCREEN_PIXEL_SIZE;
+	}
+	vec4 color = texture(screen_texture, sample_uv);
 	float level = clamp(saturation_level, 0.0, 1.0);
 
 	float desat_amount = desaturation_amount(level);

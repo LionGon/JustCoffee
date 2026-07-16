@@ -43,12 +43,16 @@ func apply_cycle_opening_reset(cycle: int) -> void:
 
 func apply_saturation() -> void:
 	EventBus.saturation_changed.emit(saturation_level)
-	_push_overlay_shader_params()
+	# Dissociation first so overlay uniforms match the EventBus edge in one frame.
 	_update_dissociation()
+	_push_overlay_shader_params()
 
 
+## Emits dissociation edge and enables camera-drift shader (ISSUE-303).
+## Not a game over — no player-facing message (RULES.md §6.1).
 func dissociation_state() -> void:
 	EventBus.dissociation_state_changed.emit(_in_dissociation)
+	_push_overlay_shader_params()
 
 
 func set_post_elena_state(active: bool) -> void:
@@ -78,3 +82,4 @@ func _push_overlay_shader_params() -> void:
 				var shader_material: ShaderMaterial = material as ShaderMaterial
 				shader_material.set_shader_parameter("saturation_level", saturation_level)
 				shader_material.set_shader_parameter("post_elena_state", post_elena_state)
+				shader_material.set_shader_parameter("dissociation_active", _in_dissociation)
