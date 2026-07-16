@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://2fm0jrp8bi13"]
+
+[ext_resource type="Script" uid="uid://b2yh3uahsf8pu" path="res://scenes/debug/desaturation_compare_test.gd" id="1_test"]
+[ext_resource type="Texture2D" uid="uid://si32hdq2j1bj" path="res://assets/backgrounds/threshold_apartment_cycle0.png" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://coh8ukfqxg7uu" path="res://scenes/effects/saturation_overlay.tscn" id="3_overlay"]
+
+[node name="DesaturationCompareTest" type="Control" unique_id=1996957794]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_test")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1810290236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SaturationOverlay" parent="." unique_id=2077761567 instance=ExtResource("3_overlay")]
+layout_mode = 1
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=312575906]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -132.0
+offset_right = 360.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox" unique_id=1515841602]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "ISSUE-302 — desaturation via combined vignette shader (#20)"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="VBox" unique_id=1291670687]
+layout_mode = 2
+text = "Band: calm — saturation_level = 0.00"
+horizontal_alignment = 1
+
+[node name="LevelRow" type="HBoxContainer" parent="VBox" unique_id=771661626]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Level0Button" type="Button" parent="VBox/LevelRow" unique_id=1332396971]
+layout_mode = 2
+text = "0.0 calm"
+
+[node name="Level5Button" type="Button" parent="VBox/LevelRow" unique_id=1501524572]
+layout_mode = 2
+text = "0.5 mid"
+
+[node name="Level85Button" type="Button" parent="VBox/LevelRow" unique_id=2132348262]
+layout_mode = 2
+text = "0.85 dissociation"
+
+[node name="Level100Button" type="Button" parent="VBox/LevelRow" unique_id=683190958]
+layout_mode = 2
+text = "1.0 max"
