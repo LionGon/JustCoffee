@@ -30,6 +30,9 @@ signal interactable_clicked(interactable_id: String)
 ## NPC or scripted dialogue sequence started.
 signal dialogue_started(dialogue_id: String)
 
+## Scene change requested by interaction data (payload = scene id or path).
+signal scene_change_requested(scene_id: String)
+
 ## NPC or scripted dialogue sequence finished.
 signal dialogue_finished(dialogue_id: String)
 
