@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://ckp0mlwd1efrs"]
+
+[ext_resource type="Script" uid="uid://cbp0wpaqlcvga" path="res://scenes/debug/verb_receiver_test.gd" id="1_test"]
+[ext_resource type="Script" uid="uid://eh0qv5abvj2d" path="res://components/interactable_area.gd" id="2_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+size = Vector2(250, 100)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 18.0
+content_margin_top = 18.0
+content_margin_right = 18.0
+content_margin_bottom = 18.0
+bg_color = Color(0.12, 0.11, 0.1, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.75, 0.58, 0.28, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="VerbReceiverTest" type="Control" unique_id=672965346]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="." unique_id=483059265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08, 0.075, 0.07, 1)
+
+[node name="HotspotLayer" type="Node2D" parent="." unique_id=1048255648]
+position = Vector2(960, 700)
+
+[node name="HotspotA" type="Area2D" parent="HotspotLayer" unique_id=1159115997]
+position = Vector2(-330, 0)
+script = ExtResource("2_interactable")
+interactable_id = "hotspot_a"
+cursor_hint = "Monologue hotspot"
+enabled_verbs = Array[int]([0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotLayer/HotspotA" unique_id=1605462683]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="DevOutline" type="ColorRect" parent="HotspotLayer/HotspotA" unique_id=21645858]
+offset_left = -125.0
+offset_top = -50.0
+offset_right = 125.0
+offset_bottom = 50.0
+mouse_filter = 2
+color = Color(0.42, 0.62, 0.9, 0.45)
+
+[node name="Label" type="Label" parent="HotspotLayer/HotspotA/DevOutline" unique_id=921455876]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 250.0
+offset_bottom = 66.0
+text = "A — OBSERVER"
+horizontal_alignment = 1
+
+[node name="HotspotB" type="Area2D" parent="HotspotLayer" unique_id=1310906326]
+script = ExtResource("2_interactable")
+interactable_id = "hotspot_b"
+cursor_hint = "Dialogue hotspot"
+enabled_verbs = Array[int]([1])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotLayer/HotspotB" unique_id=1218785733]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="DevOutline" type="ColorRect" parent="HotspotLayer/HotspotB" unique_id=1615929141]
+offset_left = -125.0
+offset_top = -50.0
+offset_right = 125.0
+offset_bottom = 50.0
+mouse_filter = 2
+color = Color(0.8, 0.47, 0.32, 0.45)
+
+[node name="Label" type="Label" parent="HotspotLayer/HotspotB/DevOutline" unique_id=1681296333]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 250.0
+offset_bottom = 66.0
+text = "B — ABORDER"
+horizontal_alignment = 1
+
+[node name="HotspotC" type="Area2D" parent="HotspotLayer" unique_id=1499662148]
+position = Vector2(330, 0)
+script = ExtResource("2_interactable")
+interactable_id = "hotspot_c"
+cursor_hint = "Flag hotspot"
+enabled_verbs = Array[int]([4])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotLayer/HotspotC" unique_id=338527963]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="DevOutline" type="ColorRect" parent="HotspotLayer/HotspotC" unique_id=244908722]
+offset_left = -125.0
+offset_top = -50.0
+offset_right = 125.0
+offset_bottom = 50.0
+mouse_filter = 2
+color = Color(0.36, 0.75, 0.48, 0.45)
+
+[node name="Label" type="Label" parent="HotspotLayer/HotspotC/DevOutline" unique_id=2022367641]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 250.0
+offset_bottom = 66.0
+text = "C — UTILISER"
+horizontal_alignment = 1
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1811475796]
+
+[node name="Panel" type="PanelContainer" parent="UI" unique_id=704588934]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 900.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="UI/Panel" unique_id=1308200335]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="UI/Panel/VBox" unique_id=714839572]
+layout_mode = 2
+text = "ISSUE-202 — VerbReceiver Resource dispatch test"
+horizontal_alignment = 1
+
+[node name="VerbLabel" type="Label" parent="UI/Panel/VBox" unique_id=608094197]
+layout_mode = 2
+text = "Selected verb"
+horizontal_alignment = 1
+
+[node name="VerbRow" type="HBoxContainer" parent="UI/Panel/VBox" unique_id=839641556]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ObserverButton" type="Button" parent="UI/Panel/VBox/VerbRow" unique_id=879559886]
+layout_mode = 2
+text = "OBSERVER"
+
+[node name="ApproachButton" type="Button" parent="UI/Panel/VBox/VerbRow" unique_id=1795044895]
+layout_mode = 2
+text = "ABORDER"
+
+[node name="UseButton" type="Button" parent="UI/Panel/VBox/VerbRow" unique_id=28738221]
+layout_mode = 2
+text = "UTILISER"
+
+[node name="Hint" type="Label" parent="UI/Panel/VBox" unique_id=254355846]
+layout_mode = 2
+text = "Choose the verb, then click its matching hotspot: A emits monologue, B emits dialogue, C writes a flag."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LogLabel" type="Label" parent="UI/Panel/VBox" unique_id=1220641591]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Event log:
+(no interactions yet)"
+autowrap_mode = 2
