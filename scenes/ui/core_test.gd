@@ -7,6 +7,7 @@ const MAX_LOG_LINES: int = 14
 @onready var _state_label: Label = $Scroll/VBox/StateLabel
 @onready var _saturation_label: Label = $Scroll/VBox/SaturationLabel
 @onready var _dissociation_label: Label = $Scroll/VBox/DissociationLabel
+@onready var _reflection_mode_label: Label = $Scroll/VBox/ReflectionModeLabel
 @onready var _event_log_label: Label = $Scroll/VBox/EventLogLabel
 @onready var _verb_grid: GridContainer = $Scroll/VBox/VerbGrid
 
@@ -26,6 +27,10 @@ func _ready() -> void:
 	$Scroll/VBox/Controls/ExtraRow/ToggleLocaleButton.pressed.connect(_on_toggle_locale_pressed)
 	$Scroll/VBox/Controls/ExtraRow/UsePhoneButton.pressed.connect(_on_use_phone_pressed)
 	$Scroll/VBox/Controls/ExtraRow/ToggleElenaFlagButton.pressed.connect(_on_toggle_elena_flag_pressed)
+	$Scroll/VBox/Controls/ReflectionRow/ReflectionModeButton.pressed.connect(_on_reflection_mode_pressed)
+	$Scroll/VBox/Controls/ReflectionRow/ForceReflectionCycle1Button.pressed.connect(
+		_on_force_reflection_cycle_1_pressed
+	)
 
 	_refresh()
 
@@ -38,6 +43,7 @@ func _connect_event_bus() -> void:
 	EventBus.sanctuary_entered.connect(_on_sanctuary_entered)
 	EventBus.game_saved.connect(_on_game_saved)
 	EventBus.dissociation_state_changed.connect(_on_dissociation_state_changed)
+	EventBus.reflection_mode_toggled.connect(_on_reflection_mode_toggled)
 
 
 func _build_verb_buttons() -> void:
@@ -60,10 +66,20 @@ func _on_next_district_pressed() -> void:
 	CycleStateManager.advance_district()
 
 
+func _on_force_reflection_cycle_1_pressed() -> void:
+	GameFlags.set_flag(ReflectionMode.DEV_FORCE_ENABLE_FLAG, true)
+	ReflectionMode.set_active(true)
+	_log_action("dev_reflection_mode_force → true; set_active(true)")
+
+
 func _boot_cycle(cycle: int) -> void:
+	# Clear force so Cycle 1 lock can be retested cleanly.
+	GameFlags.set_flag(ReflectionMode.DEV_FORCE_ENABLE_FLAG, false)
 	CycleStateManager.boot_dev_cycle(cycle)
 	SaturationManager.apply_cycle_opening_reset(cycle)
-	_log_action("boot cycle %d" % cycle)
+	if cycle == 1 and ReflectionMode.is_active():
+		ReflectionMode.set_active(false)
+	_log_action("boot cycle %d (force flag cleared)" % cycle)
 
 
 func _on_toggle_locale_pressed() -> void:
@@ -82,6 +98,10 @@ func _on_toggle_elena_flag_pressed() -> void:
 	var current: bool = GameFlags.get_flag(GameFlags.FLAG_ELENA_GAZE_COMPLETE, false) as bool
 	GameFlags.set_flag(GameFlags.FLAG_ELENA_GAZE_COMPLETE, not current)
 	_log_action("elena_gaze_complete → %s" % str(not current))
+
+
+func _on_reflection_mode_pressed() -> void:
+	ReflectionMode.toggle()
 
 
 func _on_verb_button_pressed(verb: VerbSystem.Verb) -> void:
@@ -128,6 +148,10 @@ func _on_game_saved(slot_id: int) -> void:
 func _on_dissociation_state_changed(active: bool) -> void:
 	_dissociation_active = active
 	_record_event("dissociation_state_changed", [active])
+
+
+func _on_reflection_mode_toggled(active: bool) -> void:
+	_record_event("reflection_mode_toggled", [active])
 
 
 func _record_event(signal_name: String, args: Array = []) -> void:
@@ -189,3 +213,10 @@ func _refresh() -> void:
 		if _dissociation_active
 		else "Dissociation: inactive — raise saturation to ≥ %.2f"
 	) % _effective_dissociation_threshold()
+	_reflection_mode_label.text = (
+		"Reflection Mode: %s · Cycle 1 dev force=%s"
+		% [
+			"ACTIVE" if ReflectionMode.is_active() else "inactive",
+			GameFlags.get_flag(ReflectionMode.DEV_FORCE_ENABLE_FLAG, false),
+		]
+	)

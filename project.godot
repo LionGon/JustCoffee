@@ -32,6 +32,7 @@ GameFlags="*res://core/game_flags.gd"
 Dialogic="*uid://ds2q0uclmolvu"
 DialogicBridge="*res://core/dialogic_bridge.gd"
 AudioSaturationController="*res://scripts/systems/audio_saturation_controller.gd"
+ReflectionMode="*res://scripts/systems/reflection_mode.gd"
 
 [dialogic]
 
