@@ -29,3 +29,8 @@ item.eyes_down.cost,Sustained saturation drain
 item.keys_between_fingers.name,Keys between fingers
 item.keys_between_fingers.description,Always in inventory
 item.keys_between_fingers.cost,Narrative only
+gaze_thomas_cycle_1,"His gaze sweeps the room. You are in the inventory."
+gaze_kevin_cycle_1,"He hasn't looked at you yet. Or he has, and you missed the moment."
+gaze_thomas_cycle_0,"Someone at the next table looks past you."
+gaze_kevin_cycle_0,"A man nearby keeps his eyes on the cup, not the room."
+gaze_blocked_by_phone,"The screen holds your eyes. The room goes unread."

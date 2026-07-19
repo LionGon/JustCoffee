@@ -29,3 +29,8 @@ item.eyes_down.cost,Drain de saturation soutenu
 item.keys_between_fingers.name,Clés entre les doigts
 item.keys_between_fingers.description,Toujours dans l'inventaire
 item.keys_between_fingers.cost,Narratif seulement
+gaze_thomas_cycle_1,"Son regard glisse sur la salle. Vous êtes dans l'inventaire."
+gaze_kevin_cycle_1,"Il ne vous a pas encore regardée. Ou alors vous avez manqué l'instant."
+gaze_thomas_cycle_0,"Quelqu'un à la table voisine regarde au-delà de vous."
+gaze_kevin_cycle_0,"Un homme près d'ici garde les yeux sur sa tasse, pas sur la salle."
+gaze_blocked_by_phone,"L'écran retient vos yeux. La salle devient illisible."
