@@ -1,0 +1,161 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/debug/reflection_mode_test.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/effects/reflection_mode_overlay.tscn" id="2_overlay"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.08, 0.08, 0.1, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.75, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 16.0
+content_margin_top = 14.0
+content_margin_right = 16.0
+content_margin_bottom = 14.0
+
+[node name="ReflectionModeTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.28, 1)
+
+[node name="AccentLeft" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 220.0
+offset_right = 320.0
+offset_bottom = 520.0
+mouse_filter = 2
+color = Color(0.2, 0.45, 0.75, 1)
+
+[node name="AccentRight" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 260.0
+offset_right = 1840.0
+offset_bottom = 560.0
+mouse_filter = 2
+color = Color(0.85, 0.35, 0.15, 1)
+
+[node name="CenterBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 400.0
+offset_right = 1220.0
+offset_bottom = 700.0
+mouse_filter = 2
+color = Color(0.9, 0.88, 0.8, 1)
+
+[node name="ReflectionModeOverlay" parent="." instance=ExtResource("2_overlay")]
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 980.0
+offset_bottom = 420.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.95, 0.8, 0.25, 1)
+text = "ISSUE-306 — Reflection Mode (only these yellow steps)"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Status"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Hint"
+horizontal_alignment = 1
+
+[node name="Step1Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.25, 1)
+text = "STEP 1 — Cycle 0: toggle should work (screen goes weird)"
+
+[node name="Step1Row" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Cycle0Button" type="Button" parent="Panel/VBox/Step1Row"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+text = "1a · Go Cycle 0"
+
+[node name="ToggleButton" type="Button" parent="Panel/VBox/Step1Row"]
+custom_minimum_size = Vector2(280, 48)
+layout_mode = 2
+text = "1b · Toggle Reflection ON/OFF"
+
+[node name="Step2Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.25, 1)
+text = "STEP 2 — Cycle 1: toggle must FAIL (stay normal)"
+
+[node name="Step2Row" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Cycle1Button" type="Button" parent="Panel/VBox/Step2Row"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+text = "2a · Go Cycle 1"
+
+[node name="TryBlockedButton" type="Button" parent="Panel/VBox/Step2Row"]
+custom_minimum_size = Vector2(280, 48)
+layout_mode = 2
+text = "2b · Try Toggle (must stay OFF)"
+
+[node name="Step3Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.25, 1)
+text = "STEP 3 — Dev only: force unlock in Cycle 1"
+
+[node name="Step3Row" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ForceOnButton" type="Button" parent="Panel/VBox/Step3Row"]
+custom_minimum_size = Vector2(280, 48)
+layout_mode = 2
+text = "3 · Force Reflection ON"
+
+[node name="ClearForceButton" type="Button" parent="Panel/VBox/Step3Row"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+text = "Clear force flag"
+
+[node name="LogLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Log"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://coretestscene01"]
+[gd_scene format=3 uid="uid://db2f4weow1umm"]
 
-[ext_resource type="Script" path="res://scenes/ui/core_test.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/threshold_apartment_cycle0.png" id="2_bg"]
-[ext_resource type="PackedScene" uid="uid://saturationoverlay01" path="res://scenes/effects/saturation_overlay.tscn" id="3_overlay"]
+[ext_resource type="Script" uid="uid://p7tfkc8etq0r" path="res://scenes/ui/core_test.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://si32hdq2j1bj" path="res://assets/backgrounds/threshold_apartment_cycle0.png" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://coh8ukfqxg7uu" path="res://scenes/effects/saturation_overlay.tscn" id="3_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/effects/reflection_mode_overlay.tscn" id="4_reflection_overlay"]
 
-[node name="CoreTest" type="Control"]
+[node name="CoreTest" type="Control" unique_id=1014557108]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1132239060]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,16 +26,13 @@ texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SaturationOverlay" parent="." instance=ExtResource("3_overlay")]
+[node name="SaturationOverlay" parent="." unique_id=2129870392 instance=ExtResource("3_overlay")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
-[node name="Scroll" type="ScrollContainer" parent="."]
+[node name="ReflectionModeOverlay" parent="." unique_id=942102849 instance=ExtResource("4_reflection_overlay")]
+layout_mode = 1
+
+[node name="Scroll" type="ScrollContainer" parent="." unique_id=1429824363]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,92 +40,109 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Scroll"]
+[node name="VBox" type="VBoxContainer" parent="Scroll" unique_id=859759937]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="TitleLabel" type="Label" parent="Scroll/VBox"]
+[node name="TitleLabel" type="Label" parent="Scroll/VBox" unique_id=486701260]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Core integration test (ISSUE-108)"
 horizontal_alignment = 1
 
-[node name="StateLabel" type="Label" parent="Scroll/VBox"]
+[node name="StateLabel" type="Label" parent="Scroll/VBox" unique_id=2091165638]
 layout_mode = 2
-autowrap_mode = 3
 text = "Loading..."
-
-[node name="SaturationLabel" type="Label" parent="Scroll/VBox"]
-layout_mode = 2
 autowrap_mode = 3
+
+[node name="SaturationLabel" type="Label" parent="Scroll/VBox" unique_id=2047177467]
+layout_mode = 2
 text = "Dev only — saturation"
-
-[node name="DissociationLabel" type="Label" parent="Scroll/VBox"]
-layout_mode = 2
 autowrap_mode = 3
-text = "Dissociation"
 
-[node name="Controls" type="VBoxContainer" parent="Scroll/VBox"]
+[node name="DissociationLabel" type="Label" parent="Scroll/VBox" unique_id=1899015839]
+layout_mode = 2
+text = "Dissociation"
+autowrap_mode = 3
+
+[node name="ReflectionModeLabel" type="Label" parent="Scroll/VBox" unique_id=528136428]
+layout_mode = 2
+text = "Reflection Mode"
+autowrap_mode = 3
+
+[node name="Controls" type="VBoxContainer" parent="Scroll/VBox" unique_id=1123227584]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="SatRow" type="HBoxContainer" parent="Scroll/VBox/Controls"]
+[node name="SatRow" type="HBoxContainer" parent="Scroll/VBox/Controls" unique_id=1020206568]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SatPlusButton" type="Button" parent="Scroll/VBox/Controls/SatRow"]
+[node name="SatPlusButton" type="Button" parent="Scroll/VBox/Controls/SatRow" unique_id=1894404527]
 layout_mode = 2
 text = "+ Saturation"
 
-[node name="SatMinusButton" type="Button" parent="Scroll/VBox/Controls/SatRow"]
+[node name="SatMinusButton" type="Button" parent="Scroll/VBox/Controls/SatRow" unique_id=115262516]
 layout_mode = 2
 text = "− Saturation"
 
-[node name="DistrictRow" type="HBoxContainer" parent="Scroll/VBox/Controls"]
+[node name="DistrictRow" type="HBoxContainer" parent="Scroll/VBox/Controls" unique_id=293593192]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="NextDistrictButton" type="Button" parent="Scroll/VBox/Controls/DistrictRow"]
+[node name="NextDistrictButton" type="Button" parent="Scroll/VBox/Controls/DistrictRow" unique_id=698141337]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Next district"
 
-[node name="Cycle0Button" type="Button" parent="Scroll/VBox/Controls/DistrictRow"]
+[node name="Cycle0Button" type="Button" parent="Scroll/VBox/Controls/DistrictRow" unique_id=1916617579]
 layout_mode = 2
 text = "Cycle 0"
 
-[node name="Cycle1Button" type="Button" parent="Scroll/VBox/Controls/DistrictRow"]
+[node name="Cycle1Button" type="Button" parent="Scroll/VBox/Controls/DistrictRow" unique_id=613015438]
 layout_mode = 2
 text = "Cycle 1"
 
-[node name="ExtraRow" type="HBoxContainer" parent="Scroll/VBox/Controls"]
+[node name="ExtraRow" type="HBoxContainer" parent="Scroll/VBox/Controls" unique_id=816651546]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="ToggleLocaleButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow"]
+[node name="ToggleLocaleButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow" unique_id=6357416]
 layout_mode = 2
 text = "Toggle FR / EN"
 
-[node name="UsePhoneButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow"]
+[node name="UsePhoneButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow" unique_id=841272317]
 layout_mode = 2
 text = "Use phone (inventory)"
 
-[node name="ToggleElenaFlagButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow"]
+[node name="ToggleElenaFlagButton" type="Button" parent="Scroll/VBox/Controls/ExtraRow" unique_id=1486916030]
 layout_mode = 2
 text = "Toggle elena_gaze flag"
 
-[node name="VerbTitle" type="Label" parent="Scroll/VBox"]
+[node name="ReflectionRow" type="HBoxContainer" parent="Scroll/VBox/Controls" unique_id=641305210]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ReflectionModeButton" type="Button" parent="Scroll/VBox/Controls/ReflectionRow" unique_id=1840939878]
+layout_mode = 2
+text = "Reflection Mode"
+
+[node name="ForceReflectionCycle1Button" type="Button" parent="Scroll/VBox/Controls/ReflectionRow" unique_id=1838657680]
+layout_mode = 2
+text = "Force enable Cycle 1"
+
+[node name="VerbTitle" type="Label" parent="Scroll/VBox" unique_id=974897854]
 layout_mode = 2
 text = "Select verb (emits verb_selected):"
 
-[node name="VerbGrid" type="GridContainer" parent="Scroll/VBox"]
+[node name="VerbGrid" type="GridContainer" parent="Scroll/VBox" unique_id=583072362]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 6
 columns = 2
 
-[node name="EventLogLabel" type="Label" parent="Scroll/VBox"]
+[node name="EventLogLabel" type="Label" parent="Scroll/VBox" unique_id=1395697716]
 layout_mode = 2
-autowrap_mode = 3
 text = "EventBus log (dev):"
+autowrap_mode = 3
