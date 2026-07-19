@@ -42,7 +42,7 @@ const VERB_LABELS_EN: Dictionary = {
 	Verb.RECULER: "RETREAT",
 }
 
-static var selected_verb: Verb = Verb.OBSERVER
+static var selected_verb: Verb = Verb.ALLER
 
 
 static func get_label(verb: Verb, locale: String = "fr") -> String:

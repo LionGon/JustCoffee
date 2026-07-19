@@ -82,6 +82,9 @@ func _load_csv_table(path: String) -> Dictionary:
 		var parts: PackedStringArray = line.split(",", false, 1)
 		if parts.size() < 2:
 			continue
-		table[parts[0]] = parts[1]
+		var text: String = parts[1]
+		if text.length() >= 2 and text.begins_with("\"") and text.ends_with("\""):
+			text = text.substr(1, text.length() - 2).replace("\"\"", "\"")
+		table[parts[0]] = text
 
 	return table
