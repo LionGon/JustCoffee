@@ -6,7 +6,7 @@ extends Area2D
 ## `get_avoid_waypoint()` when VerbSystem.selected_verb == EVITER and
 ## `is_player_in_gaze()`. Full NavigationAgent2D wiring is optional for VS.
 ##
-## ISSUE-204 will bind these local states to the NPC state machine.
+## Bound to NpcStateMachine (ISSUE-204) when that component syncs SCANNING / LOCKED_ON / IDLE.
 
 
 enum GazeState {
