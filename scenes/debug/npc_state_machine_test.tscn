@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://cnpcfsm16test"]
+
+[ext_resource type="Script" uid="uid://cfdgvjf4lsta6" path="res://scenes/debug/npc_state_machine_test.gd" id="1_test"]
+[ext_resource type="Script" uid="uid://br62c8yuyj0k" path="res://components/npc_state_machine.gd" id="2_fsm"]
+
+[node name="NpcStateMachineTest" type="Node2D" unique_id=659587898]
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1673508467]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.1, 0.09, 0.08, 1)
+
+[node name="Observer" type="Node2D" parent="." unique_id=1409941560]
+position = Vector2(480, 520)
+
+[node name="Body" type="ColorRect" parent="Observer" unique_id=654836333]
+offset_left = -40.0
+offset_top = -64.0
+offset_right = 40.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(0.55, 0.35, 0.22, 1)
+
+[node name="Name" type="Label" parent="Observer" unique_id=152137794]
+offset_left = -70.0
+offset_top = -96.0
+offset_right = 70.0
+offset_bottom = -70.0
+text = "Observer"
+horizontal_alignment = 1
+
+[node name="NpcStateMachine" type="Node" parent="Observer" unique_id=1349011160]
+script = ExtResource("2_fsm")
+npc_id = "observer"
+
+[node name="Marc" type="Node2D" parent="." unique_id=98760097]
+position = Vector2(960, 520)
+
+[node name="Body" type="ColorRect" parent="Marc" unique_id=1789141912]
+offset_left = -40.0
+offset_top = -64.0
+offset_right = 40.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.38, 1)
+
+[node name="Name" type="Label" parent="Marc" unique_id=578102124]
+offset_left = -50.0
+offset_top = -96.0
+offset_right = 50.0
+offset_bottom = -70.0
+text = "Marc"
+horizontal_alignment = 1
+
+[node name="NpcStateMachine" type="Node" parent="Marc" unique_id=1742355657]
+script = ExtResource("2_fsm")
+npc_id = "marc"
+initial_state = 5
+
+[node name="Shopkeeper" type="Node2D" parent="." unique_id=1911136059]
+position = Vector2(1440, 520)
+
+[node name="Body" type="ColorRect" parent="Shopkeeper" unique_id=102187093]
+offset_left = -40.0
+offset_top = -64.0
+offset_right = 40.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(0.58, 0.52, 0.4, 1)
+
+[node name="Name" type="Label" parent="Shopkeeper" unique_id=1066250876]
+offset_left = -80.0
+offset_top = -96.0
+offset_right = 80.0
+offset_bottom = -70.0
+text = "Shopkeeper"
+horizontal_alignment = 1
+
+[node name="NpcStateMachine" type="Node" parent="Shopkeeper" unique_id=1382544660]
+script = ExtResource("2_fsm")
+npc_id = "grocery_shopkeeper"
+apply_shopkeeper_benevolent_by_cycle = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=754471734]
+
+[node name="Panel" type="PanelContainer" parent="UI" unique_id=1758888092]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 980.0
+offset_bottom = 420.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/Panel" unique_id=1635177745]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="UI/Panel/VBox" unique_id=1099270322]
+layout_mode = 2
+text = "ISSUE-204 — NpcStateMachine test"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="UI/Panel/VBox" unique_id=1590069276]
+layout_mode = 2
+text = "Status"
+autowrap_mode = 3
+
+[node name="ObserverRow" type="HBoxContainer" parent="UI/Panel/VBox" unique_id=1304951416]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="IdleButton" type="Button" parent="UI/Panel/VBox/ObserverRow" unique_id=1725063987]
+layout_mode = 2
+text = "→ IDLE"
+
+[node name="ScanButton" type="Button" parent="UI/Panel/VBox/ObserverRow" unique_id=401097427]
+layout_mode = 2
+text = "→ SCANNING"
+
+[node name="LockButton" type="Button" parent="UI/Panel/VBox/ObserverRow" unique_id=517517322]
+layout_mode = 2
+text = "→ LOCKED_ON"
+
+[node name="HostileButton" type="Button" parent="UI/Panel/VBox/ObserverRow" unique_id=760654810]
+layout_mode = 2
+text = "→ HOSTILE"
+
+[node name="BenevolentInvalidButton" type="Button" parent="UI/Panel/VBox/ObserverRow" unique_id=924749664]
+layout_mode = 2
+text = "→ BENEVOLENT (invalid from scan)"
+
+[node name="RoleRow" type="HBoxContainer" parent="UI/Panel/VBox" unique_id=539410562]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Cycle0Button" type="Button" parent="UI/Panel/VBox/RoleRow" unique_id=1180147219]
+layout_mode = 2
+text = "Shopkeeper Cycle 0"
+
+[node name="Cycle1Button" type="Button" parent="UI/Panel/VBox/RoleRow" unique_id=1155820657]
+layout_mode = 2
+text = "Shopkeeper Cycle 1+"
+
+[node name="MarcComplicitButton" type="Button" parent="UI/Panel/VBox/RoleRow" unique_id=714461251]
+layout_mode = 2
+text = "Assert Marc COMPLICIT"
+
+[node name="LogScroll" type="ScrollContainer" parent="UI/Panel/VBox" unique_id=1750587187]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LogLabel" type="Label" parent="UI/Panel/VBox/LogScroll" unique_id=1580742503]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Log"
+autowrap_mode = 3
